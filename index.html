@@ -378,145 +378,145 @@
   <!-- THIS BUTTON GOES DIRECTLY TO THE REAL CMS -->
   <a href="/admin/" class="admin-fab" title="Admin Panel"><i class="fas fa-cog"></i></a>
 
-  <script>
-    // 1. DEFAULT FALLBACK DATA
-    const defaultData = {
-      hero: { subtitle: "Premium Natural Stone Since 1995", title: "Sculpting Elegance\nFrom Nature's Core", desc: "Discover the world's finest marble, granite, and exotic stones." },
-      about: { title: "Three Decades of Stone Mastery", text1: "For over thirty years, Hussain Marble has been the trusted name in premium natural stone.", text2: "Our master craftsmen transform raw stone into breathtaking works of art." },
-      collections: [
-        { name: "Carrara White", type: "Italian Marble", color: "linear-gradient(135deg, #f5f5f5, #d4d4d4, #fff)" },
-        { name: "Nero Marquina", type: "Spanish Black Marble", color: "linear-gradient(135deg, #1a1a1a, #333, #0f0f0f)" },
-        { name: "Azul Macaubas", type: "Brazilian Quartzite", color: "linear-gradient(135deg, #1e3a5f, #2c5282, #1a365d)" }
-      ],
-      services: [
-        { icon: "fas fa-gem", title: "Premium Supply", desc: "Hand-selected marble from the world's finest quarries." },
-        { icon: "fas fa-tools", title: "Expert Installation", desc: "Flawless installation with precision-cut slabs." }
-      ],
-      gallery: [
-        { title: "Grand Villa Foyer", category: "Residential", color: "linear-gradient(135deg, #d4d4d4, #fff, #c0c0c0)" },
-        { title: "Executive Office", category: "Commercial", color: "linear-gradient(135deg, #1a1a1a, #333, #1a1a1a)" },
-        { title: "Luxury Bathroom", category: "Residential", color: "linear-gradient(135deg, #2c5282, #1a365d, #2b4c7e)" },
-        { title: "Hotel Lobby", category: "Hospitality", color: "linear-gradient(135deg, #2d6a4f, #1b4332, #2d6a4f)" }
-      ],
-      testimonials: [
-        { quote: "Hussain Marble transformed our home into a palace!", author: "Ahmed Khan", role: "Homeowner, Lahore" }
-      ],
-      contact: { address: "Main Showroom, Lahore, Pakistan", phone: "+92 300 1234567", email: "info@hussainmarble.store" }
-    };
+ <script>
+  const defaultData = {
+    hero: { subtitle: "Premium Natural Stone Since 1995", title: "Sculpting Elegance\nFrom Nature's Core", desc: "Discover the world's finest marble, granite, and exotic stones." },
+    about: { title: "Three Decades of Stone Mastery", text1: "For over thirty years, Hussain Marble has been the trusted name in premium natural stone.", text2: "Our master craftsmen transform raw stone into breathtaking works of art." },
+    collections: [
+      { name: "Carrara White", type: "Italian Marble", image: "" },
+      { name: "Nero Marquina", type: "Spanish Black Marble", image: "" },
+      { name: "Azul Macaubas", type: "Brazilian Quartzite", image: "" }
+    ],
+    services: [
+      { icon: "fas fa-gem", title: "Premium Supply", desc: "Hand-selected marble from the world's finest quarries." },
+      { icon: "fas fa-tools", title: "Expert Installation", desc: "Flawless installation with precision-cut slabs." }
+    ],
+    gallery: [
+      { title: "Grand Villa Foyer", category: "Residential", image: "" },
+      { title: "Executive Office", category: "Commercial", image: "" }
+    ],
+    testimonials: [
+      { quote: "Hussain Marble transformed our home into a palace!", author: "Ahmed Khan", role: "Homeowner, Lahore" }
+    ],
+    contact: { address: "Main Showroom, Lahore, Pakistan", phone: "+92 300 1234567", email: "info@hussainmarble.store" }
+  };
 
-    let siteData = defaultData;
+  let siteData = defaultData;
 
-    // 2. FETCH DATA FROM CMS (data.json)
-    fetch('data.json')
-      .then(response => response.json())
-      .then(data => {
-        siteData = data;
-        renderSite();
-      })
-      .catch(err => {
-        console.log("Using default data (data.json not found yet)");
-        renderSite();
-      });
+  fetch('data.json')
+    .then(response => response.json())
+    .then(data => { siteData = data; renderSite(); })
+    .catch(err => renderSite());
 
-    // 3. RENDER FUNCTION
-    function renderSite() {
-      const d = siteData;
-      const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
-      
-      set('heroSubtitle', d.hero.subtitle);
-      const ht = document.getElementById('heroTitle');
-      if (ht) ht.innerHTML = d.hero.title.replace(/\n/g, '<br>');
-      set('heroDesc', d.hero.desc);
-      set('aboutTitle', d.about.title);
-      set('aboutText1', d.about.text1);
-      set('aboutText2', d.about.text2);
-      set('contactAddress', d.contact.address);
-      set('contactPhone', d.contact.phone);
-      set('contactEmail', d.contact.email);
+  function renderSite() {
+    const d = siteData;
+    const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+    
+    set('heroSubtitle', d.hero.subtitle);
+    const ht = document.getElementById('heroTitle');
+    if (ht) ht.innerHTML = d.hero.title.replace(/\n/g, '<br>');
+    set('heroDesc', d.hero.desc);
+    set('aboutTitle', d.about.title);
+    set('aboutText1', d.about.text1);
+    set('aboutText2', d.about.text2);
+    set('contactAddress', d.contact.address);
+    set('contactPhone', d.contact.phone);
+    set('contactEmail', d.contact.email);
 
-      const cg = document.getElementById('collectionsGrid');
-      if (cg) cg.innerHTML = d.collections.map(c => `
-        <div class="collection-card reveal">
-          <div class="collection-bg" style="background:${c.color}"></div>
-          <div class="collection-overlay">
-            <div class="collection-type">${c.type}</div>
-            <h3 class="collection-name">${c.name}</h3>
-            <a href="#contact" class="collection-link">View Details <i class="fas fa-arrow-right"></i></a>
-          </div>
+    // Update About Image if exists
+    const aboutImg = document.querySelector('.about-image');
+    if (aboutImg && d.about.image) {
+      aboutImg.style.backgroundImage = `url('${d.about.image}')`;
+      aboutImg.style.backgroundSize = 'cover';
+      aboutImg.style.backgroundPosition = 'center';
+    }
+
+    // Render Collections with Images
+    const cg = document.getElementById('collectionsGrid');
+    if (cg) cg.innerHTML = d.collections.map(c => `
+      <div class="collection-card reveal">
+        <div class="collection-bg" style="background-image: url('${c.image || ''}'); background-size: cover; background-position: center; ${!c.image ? 'background: linear-gradient(135deg, #333, #555);' : ''}"></div>
+        <div class="collection-overlay">
+          <div class="collection-type">${c.type}</div>
+          <h3 class="collection-name">${c.name}</h3>
+          <a href="#contact" class="collection-link">View Details <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>`).join('');
+
+    // Render Services
+    const sg = document.getElementById('servicesGrid');
+    if (sg) sg.innerHTML = d.services.map(s => `
+      <div class="service-card reveal">
+        <div class="service-icon"><i class="${s.icon}"></i></div>
+        <h3 class="service-title">${s.title}</h3>
+        <p class="service-desc">${s.desc}</p>
+      </div>`).join('');
+
+    // Render Gallery with Images
+    const gg = document.getElementById('galleryGrid');
+    if (gg) gg.innerHTML = d.gallery.map(g => `
+      <div class="gallery-item reveal">
+        <div class="gallery-bg" style="background-image: url('${g.image || ''}'); background-size: cover; background-position: center; ${!g.image ? 'background: linear-gradient(135deg, #333, #555);' : ''}"></div>
+        <div class="gallery-caption"><h4>${g.title}</h4><p>${g.category}</p></div>
+      </div>`).join('');
+
+    // Render Testimonials
+    const tt = document.getElementById('testimonialTrack');
+    const tn = document.getElementById('testimonialNav');
+    if (tt && tn) {
+      tt.innerHTML = d.testimonials.map(t => `
+        <div class="testimonial">
+          <div class="testimonial-quote">${t.quote}</div>
+          <div class="testimonial-author">${t.author}</div>
+          <div class="testimonial-role">${t.role}</div>
         </div>`).join('');
-
-      const sg = document.getElementById('servicesGrid');
-      if (sg) sg.innerHTML = d.services.map(s => `
-        <div class="service-card reveal">
-          <div class="service-icon"><i class="${s.icon}"></i></div>
-          <h3 class="service-title">${s.title}</h3>
-          <p class="service-desc">${s.desc}</p>
-        </div>`).join('');
-
-      const gg = document.getElementById('galleryGrid');
-      if (gg) gg.innerHTML = d.gallery.map(g => `
-        <div class="gallery-item reveal">
-          <div class="gallery-bg" style="background:${g.color}"></div>
-          <div class="gallery-caption"><h4>${g.title}</h4><p>${g.category}</p></div>
-        </div>`).join('');
-
-      const tt = document.getElementById('testimonialTrack');
-      const tn = document.getElementById('testimonialNav');
-      if (tt && tn) {
-        tt.innerHTML = d.testimonials.map(t => `
-          <div class="testimonial">
-            <div class="testimonial-quote">${t.quote}</div>
-            <div class="testimonial-author">${t.author}</div>
-            <div class="testimonial-role">${t.role}</div>
-          </div>`).join('');
-        tn.innerHTML = d.testimonials.map((_, i) => `
-          <button class="testimonial-dot ${i === 0 ? 'active' : ''}" onclick="goToTestimonial(${i})"></button>`).join('');
-      }
-      initReveal();
+      tn.innerHTML = d.testimonials.map((_, i) => `
+        <button class="testimonial-dot ${i === 0 ? 'active' : ''}" onclick="goToTestimonial(${i})"></button>`).join('');
     }
+    initReveal();
+  }
 
-    // 4. UI INTERACTIONS
-    let currentTestimonial = 0;
-    function goToTestimonial(i) {
-      currentTestimonial = i;
-      const track = document.getElementById('testimonialTrack');
-      if (track) track.style.transform = `translateX(-${i * 100}%)`;
-      document.querySelectorAll('.testimonial-dot').forEach((dot, idx) => dot.classList.toggle('active', idx === i));
-    }
-    setInterval(() => {
-      const dots = document.querySelectorAll('.testimonial-dot');
-      if (dots.length > 1) goToTestimonial((currentTestimonial + 1) % dots.length);
-    }, 5000);
+  let currentTestimonial = 0;
+  function goToTestimonial(i) {
+    currentTestimonial = i;
+    const track = document.getElementById('testimonialTrack');
+    if (track) track.style.transform = `translateX(-${i * 100}%)`;
+    document.querySelectorAll('.testimonial-dot').forEach((dot, idx) => dot.classList.toggle('active', idx === i));
+  }
+  setInterval(() => {
+    const dots = document.querySelectorAll('.testimonial-dot');
+    if (dots.length > 1) goToTestimonial((currentTestimonial + 1) % dots.length);
+  }, 5000);
 
-    function initReveal() {
-      const obs = new IntersectionObserver(entries => {
-        entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-      }, { threshold: 0.1 });
-      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-    }
+  function initReveal() {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  }
 
-    const cursor = document.getElementById('cursor');
-    if (cursor) {
-      document.addEventListener('mousemove', e => { cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px'; });
-      document.querySelectorAll('a, button, .collection-card, .gallery-item').forEach(el => {
-        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-      });
-    }
-
-    window.addEventListener('scroll', () => {
-      document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+  const cursor = document.getElementById('cursor');
+  if (cursor) {
+    document.addEventListener('mousemove', e => { cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px'; });
+    document.querySelectorAll('a, button, .collection-card, .gallery-item').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
     });
+  }
 
-    window.addEventListener('load', () => {
-      setTimeout(() => document.getElementById('loader').classList.add('hidden'), 1500);
-    });
+  window.addEventListener('scroll', () => {
+    document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 50);
+  });
 
-    function submitForm(e) {
-      e.preventDefault();
-      alert('Message sent! We will contact you soon.');
-      e.target.reset();
-    }
-  </script>
+  window.addEventListener('load', () => {
+    setTimeout(() => document.getElementById('loader').classList.add('hidden'), 1500);
+  });
+
+  function submitForm(e) {
+    e.preventDefault();
+    alert('Message sent! We will contact you soon.');
+    e.target.reset();
+  }
+</script>
 </body>
 </html>
