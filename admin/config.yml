@@ -8,84 +8,51 @@ public_folder: "/images"
 collections:
   - name: "site_data"
     label: "Website Content"
-    format: "json"
-    file: "data.json"
-    fields:
-      - label: "Hero Section"
-        name: "hero"
-        widget: "object"
+    files:
+      - name: "homepage"
+        label: "Homepage Content"
+        file: "data.json"
+        format: json
         fields:
-          - label: "Subtitle"
-            name: "subtitle"
-            widget: "string"
-          - label: "Title"
-            name: "title"
-            widget: "text"
-          - label: "Description"
-            name: "desc"
-            widget: "text"
-      - label: "About Section"
-        name: "about"
-        widget: "object"
-        fields:
-          - label: "Title"
-            name: "title"
-            widget: "string"
-          - label: "Paragraph 1"
-            name: "text1"
-            widget: "text"
-          - label: "Paragraph 2"
-            name: "text2"
-            widget: "text"
-      - label: "Collections"
-        name: "collections"
-        widget: "list"
-        fields:
-          - label: "Name"
-            name: "name"
-            widget: "string"
-          - label: "Type"
-            name: "type"
-            widget: "string"
-          - label: "Color Gradient"
-            name: "color"
-            widget: "string"
-      - label: "Services"
-        name: "services"
-        widget: "list"
-        fields:
-          - label: "Icon"
-            name: "icon"
-            widget: "string"
-          - label: "Title"
-            name: "title"
-            widget: "string"
-          - label: "Description"
-            name: "desc"
-            widget: "text"
-      - label: "Testimonials"
-        name: "testimonials"
-        widget: "list"
-        fields:
-          - label: "Quote"
-            name: "quote"
-            widget: "text"
-          - label: "Author"
-            name: "author"
-            widget: "string"
-          - label: "Role"
-            name: "role"
-            widget: "string"
-      - label: "Contact Info"
-        name: "contact"
-        widget: "object"
-        fields:
-          - label: "Address"
-            name: "address"
-            widget: "string"
-          - label: "Phone"
-            name: "phone"
-            widget: "string"
-          - label: "Email"
-            name: "email"
-            widget: "string"
+          - label: "Hero Section"
+            name: "hero"
+            widget: "object"
+            fields:
+              - { label: "Subtitle", name: "subtitle", widget: "string" }
+              - { label: "Title", name: "title", widget: "text" }
+              - { label: "Description", name: "desc", widget: "text" }
+          - label: "About Section"
+            name: "about"
+            widget: "object"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Paragraph 1", name: "text1", widget: "text" }
+              - { label: "Paragraph 2", name: "text2", widget: "text" }
+          - label: "Collections"
+            name: "collections"
+            widget: "list"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Type", name: "type", widget: "string" }
+              - { label: "Color Gradient", name: "color", widget: "string" }
+          - label: "Services"
+            name: "services"
+            widget: "list"
+            fields:
+              - { label: "Icon", name: "icon", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Description", name: "desc", widget: "text" }
+          - label: "Testimonials"
+            name: "testimonials"
+            widget: "list"
+            fields:
+              - { label: "Quote", name: "quote", widget: "text" }
+              - { label: "Author", name: "author", widget: "string" }
+              - { label: "Role", name: "role", widget: "string" }
+          - label: "Contact Info"
+            name: "contact"
+            widget: "object"
+            fields:
+              - { label: "Address", name: "address", widget: "string" }
+              - { label: "Phone", name: "phone", widget: "string" }
+              - { label: "Email", name: "email", widget: "string" }
