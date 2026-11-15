@@ -1,89 +1,83 @@
 {
   "hero": {
     "subtitle": "Premium Marble, Granite & Gypsum Supplier in Nankana Sahib District",
-    "title": "Welcome to Hussain Marble",
-    "desc": "Discover the world's finest marble, granite, and exotic stones — hand-selected and crafted into timeless masterpieces for your space.",
+    "title": "Floor-to-Ceiling Perfection with Hussain Marble Factory",
+    "desc": "Established in 2010, Hussain Marble Factory is your trusted source for premium marble, granite, ceramic tiles, and A-grade gypsum powder. We provide expert cutting, polishing, and installation services with fast, direct delivery across Mor Khunda, Bucheki, Manawala, and Mandi Faizabad.",
     "image": "/images/whatsapp-image-2026-10-10-at-6.44.13-pm.jpeg"
   },
   "about": {
-    "title": "Three Decades of Stone Mastery",
-    "text1": "For over thirty years, Hussain Marble has been the trusted name in premium natural stone across Pakistan and beyond.",
-    "text2": "Our master craftsmen transform raw stone into breathtaking works of art.",
+    "title": "About Hussain Marble Factory",
+    "text1": "Founded in 2010 in the heart of Mor Khunda, Hussain Marble Factory has grown into the leading natural stone and construction material supplier in the Nankana Sahib District. We specialize in providing a complete, all-in-one \"Floor-to-Ceiling\" solution for homeowners, builders, and contractors, ensuring unmatched quality, durability, and transparent digitized billing.",
+    "text2": "From precision marble cutting and crafting our signature 4x4 stone pools to producing fresh A-grade gypsum ceiling tiles onsite, our dedicated team handles every project with expertise. We pride ourselves on factory-direct pricing with no middlemen, and reliable local logistics serving communities like Bucheki, Manawala, Surab Kalan, and Surab Khurd.",
     "image": "/images/whatsapp-image-2026-10-10-at-6.44.14-pm.jpeg"
   },
   "collections": [
     {
-      "name": "Carrara White",
-      "type": "Italian Marble",
+      "name": "Premium Natural Marble",
+      "type": "Flooring & Decor",
       "image": "",
       "color": "linear-gradient(135deg,#f5f5f5,#d4d4d4,#fff,#c0c0c0,#e8e8e8)"
     },
     {
-      "name": "Nero Marquina",
-      "type": "Spanish Black Marble",
-      "image": "",
+      "name": "High-Grade Granite",
+      "type": "Countertops & Heavy-Duty Surfaces",
+      "image": "/images/unsplash-image-gi7hw4o0gzc.jpg",
       "color": "linear-gradient(135deg,#1a1a1a,#333,#0f0f0f,#2a2a2a,#1a1a1a)"
     },
     {
-      "name": "Azul Macaubas",
-      "type": "Brazilian Quartzite",
-      "image": "",
+      "name": "Ceramic Tiles",
+      "type": "Versatile Construction Flooring",
+      "image": "/images/images.jpg",
       "color": "linear-gradient(135deg,#1e3a5f,#2c5282,#1a365d,#2b4c7e,#1e3a5f)"
     },
     {
-      "name": "Verde Alpi",
-      "type": "Italian Green Marble",
-      "image": "",
+      "name": "Fresh Molded Gypsum Ceiling Tiles",
+      "type": "False Ceiling Applications",
+      "image": "/images/whatsapp-image-2026-10-10-at-6.45.31-pm-1-.jpeg",
       "color": "linear-gradient(135deg,#1f4d3a,#2d6a4f,#1b4332,#2d6a4f,#1f4d3a)"
     },
     {
-      "name": "Rosso Levanto",
-      "type": "Italian Red Marble",
-      "image": "",
+      "name": "Custom 4x4 Marble Flowers (Medallions)",
+      "type": "Signature Stone Crafting",
+      "image": "/images/images-1-.jpg",
       "color": "linear-gradient(135deg,#5c2e1f,#8b4513,#4a2416,#7a3d1f,#5c2e1f)"
-    },
-    {
-      "name": "Sahara Noir",
-      "type": "Moroccan Gold Marble",
-      "image": "",
-      "color": "linear-gradient(135deg,#4a1942,#6b2d5c,#3d1536,#5a2450,#4a1942)"
     }
   ],
   "services": [
     {
-      "icon": "fas fa-gem",
-      "title": "Premium Supply",
-      "desc": "Hand-selected marble sourced directly from the world's finest quarries."
+      "icon": "✂️",
+      "title": "Precision Cutting & Polishing",
+      "desc": "Expert onsite marble and granite cutting, custom stone pool fabrication, and professional polishing to give your flooring a flawless, mirror-like finish."
     },
     {
-      "icon": "fas fa-tools",
-      "title": "Expert Installation",
-      "desc": "Flawless installation with precision-cut slabs and seamless finishes."
+      "icon": "🚚",
+      "title": "Local Delivery & Expert Installation",
+      "desc": "Reliable, cost-effective delivery across Mor Khunda, Bucheki, Manawala, and Mandi Faizabad, paired with professional onsite installation by our experienced labor team."
     }
   ],
   "gallery": [
     {
-      "title": "Grand Villa Foyer",
-      "category": "Residential",
-      "image": "",
+      "title": "Premium White Marble Slabs",
+      "category": "Natural Stone",
+      "image": "/images/whatsapp-image-2026-10-10-at-6.40.19-pm.jpeg",
       "color": "linear-gradient(135deg,#d4d4d4,#fff,#c0c0c0)"
     },
     {
-      "title": "Executive Office",
-      "category": "Commercial",
-      "image": "",
+      "title": "Sunset View of Factory Stock",
+      "category": "Factory Operations",
+      "image": "/images/whatsapp-image-2026-10-10-at-6.45.32-pm.jpeg",
       "color": "linear-gradient(135deg,#1a1a1a,#333,#1a1a1a)"
     },
     {
-      "title": "Luxury Bathroom",
-      "category": "Residential",
-      "image": "",
+      "title": "Gypsum Ceiling Tiles in Drying Racks",
+      "category": "Gypsum Production",
+      "image": "/images/whatsapp-image-2026-10-10-at-6.45.23-pm.jpeg",
       "color": "linear-gradient(135deg,#2c5282,#1a365d,#2b4c7e)"
     },
     {
-      "title": "Hotel Lobby",
-      "category": "Hospitality",
-      "image": "",
+      "title": "4x4 Custom Marble Flower Medallion",
+      "category": "Signature Craftsmanship",
+      "image": "/images/images-2-.jpg",
       "color": "linear-gradient(135deg,#2d6a4f,#1b4332,#2d6a4f)"
     },
     {
