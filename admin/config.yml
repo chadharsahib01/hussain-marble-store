@@ -5,6 +5,8 @@ backend:
 media_folder: "images"
 public_folder: "/images"
 
+publish_mode: simple_workflow
+
 collections:
   - name: "site_data"
     label: "Website Content"
@@ -37,6 +39,7 @@ collections:
               - { label: "Name", name: "name", widget: "string" }
               - { label: "Type", name: "type", widget: "string" }
               - { label: "Marble Photo", name: "image", widget: "image", required: false }
+              - { label: "Fallback Gradient (optional)", name: "color", widget: "string", required: false }
           - label: "Services"
             name: "services"
             widget: "list"
@@ -51,6 +54,7 @@ collections:
               - { label: "Title", name: "title", widget: "string" }
               - { label: "Category", name: "category", widget: "string" }
               - { label: "Project Photo", name: "image", widget: "image", required: false }
+              - { label: "Fallback Gradient (optional)", name: "color", widget: "string", required: false }
           - label: "Testimonials"
             name: "testimonials"
             widget: "list"
@@ -65,3 +69,15 @@ collections:
               - { label: "Address", name: "address", widget: "string" }
               - { label: "Phone", name: "phone", widget: "string" }
               - { label: "Email", name: "email", widget: "string" }
+
+  - name: "custom_code"
+    label: "⚡ Advanced Custom Code (Paste & Publish)"
+    files:
+      - name: "custom_code"
+        label: "Custom CSS / HTML / JS"
+        file: "custom-code.json"
+        format: json
+        fields:
+          - { label: "Custom CSS (styling changes)", name: "customCss", widget: "code", code: "css", default: "", required: false }
+          - { label: "Custom HTML (banner/footer/etc)", name: "customBodyHtml", widget: "code", code: "html", default: "", required: false }
+          - { label: "Custom JavaScript (advanced - risky)", name: "customJs", widget: "code", code: "javascript", default: "", required: false }
