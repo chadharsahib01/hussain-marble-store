@@ -1,0 +1,28 @@
+{
+  "hero": {
+    "subtitle": "Premium Natural Stone Since 1995",
+    "title": "Sculpting Elegance From Nature's Core",
+    "desc": "Discover the world's finest marble, granite, and exotic stones — hand-selected and crafted into timeless masterpieces for your space."
+  },
+  "about": {
+    "title": "Three Decades of Stone Mastery",
+    "text1": "For over thirty years, Hussain Marble has been the trusted name in premium natural stone across Pakistan and beyond.",
+    "text2": "Our master craftsmen transform raw stone into breathtaking works of art."
+  },
+  "collections": [
+    { "name": "Carrara White", "type": "Italian Marble", "color": "linear-gradient(135deg, #f5f5f5, #d4d4d4, #fff)" },
+    { "name": "Nero Marquina", "type": "Spanish Black Marble", "color": "linear-gradient(135deg, #1a1a1a, #333, #0f0f0f)" }
+  ],
+  "services": [
+    { "icon": "fas fa-gem", "title": "Premium Supply", "desc": "Hand-selected marble sourced directly from the world's finest quarries." },
+    { "icon": "fas fa-tools", "title": "Expert Installation", "desc": "Flawless installation with precision-cut slabs and seamless finishes." }
+  ],
+  "testimonials": [
+    { "quote": "Hussain Marble transformed our home into a palace. Unmatched quality!", "author": "Ahmed Khan", "role": "Homeowner, Lahore" }
+  ],
+  "contact": {
+    "address": "Main Showroom, Lahore, Pakistan",
+    "phone": "+92 300 1234567",
+    "email": "info@hussainmarble.store"
+  }
+}
