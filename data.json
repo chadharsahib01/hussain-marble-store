@@ -1,6 +1,6 @@
 {
   "hero": {
-    "subtitle": "Premium Natural Stone Marble Granite ",
+    "subtitle": "Premium Natural Stone Marble Granite",
     "title": "Welcome to Hussain Marble",
     "desc": "Discover the world's finest marble, granite, and exotic stones — hand-selected and crafted into timeless masterpieces for your space.",
     "image": "/images/whatsapp-image-2026-10-10-at-6.44.13-pm.jpeg"
@@ -12,32 +12,34 @@
     "image": "/images/whatsapp-image-2026-10-10-at-6.44.13-pm.jpeg"
   },
   "collections": [
-    {
-      "name": "Carrara White",
-      "type": "Italian Marble",
-      "color": "linear-gradient(135deg, #f5f5f5, #d4d4d4, #fff)"
-    },
-    {
-      "name": "Nero Marquina",
-      "type": "Spanish Black Marble",
-      "color": "linear-gradient(135deg, #1a1a1a, #333, #0f0f0f)"
-    }
+    { "name": "Carrara White", "type": "Italian Marble", "image": "", "color": "linear-gradient(135deg,#f5f5f5,#d4d4d4,#fff,#c0c0c0,#e8e8e8)" },
+    { "name": "Nero Marquina", "type": "Spanish Black Marble", "image": "", "color": "linear-gradient(135deg,#1a1a1a,#333,#0f0f0f,#2a2a2a,#1a1a1a)" },
+    { "name": "Azul Macaubas", "type": "Brazilian Quartzite", "image": "", "color": "linear-gradient(135deg,#1e3a5f,#2c5282,#1a365d,#2b4c7e,#1e3a5f)" },
+    { "name": "Verde Alpi", "type": "Italian Green Marble", "image": "", "color": "linear-gradient(135deg,#1f4d3a,#2d6a4f,#1b4332,#2d6a4f,#1f4d3a)" },
+    { "name": "Rosso Levanto", "type": "Italian Red Marble", "image": "", "color": "linear-gradient(135deg,#5c2e1f,#8b4513,#4a2416,#7a3d1f,#5c2e1f)" },
+    { "name": "Sahara Noir", "type": "Moroccan Gold Marble", "image": "", "color": "linear-gradient(135deg,#4a1942,#6b2d5c,#3d1536,#5a2450,#4a1942)" }
   ],
   "services": [
-    {
-      "icon": "fas fa-gem",
-      "title": "Premium Supply",
-      "desc": "Hand-selected marble sourced directly from the world's finest quarries."
-    },
-    {
-      "icon": "fas fa-tools",
-      "title": "Expert Installation",
-      "desc": "Flawless installation with precision-cut slabs and seamless finishes."
-    }
+    { "icon": "fas fa-gem", "title": "Premium Supply", "desc": "Hand-selected marble sourced directly from the world's finest quarries." },
+    { "icon": "fas fa-tools", "title": "Expert Installation", "desc": "Flawless installation with precision-cut slabs and seamless finishes." }
   ],
-  "testimonials": [],
+  "gallery": [
+    { "title": "Grand Villa Foyer", "category": "Residential", "image": "", "color": "linear-gradient(135deg,#d4d4d4,#fff,#c0c0c0)" },
+    { "title": "Executive Office", "category": "Commercial", "image": "", "color": "linear-gradient(135deg,#1a1a1a,#333,#1a1a1a)" },
+    { "title": "Luxury Bathroom", "category": "Residential", "image": "", "color": "linear-gradient(135deg,#2c5282,#1a365d,#2b4c7e)" },
+    { "title": "Hotel Lobby", "category": "Hospitality", "image": "", "color": "linear-gradient(135deg,#2d6a4f,#1b4332,#2d6a4f)" },
+    { "title": "Kitchen Countertop", "category": "Residential", "image": "", "color": "linear-gradient(135deg,#8b4513,#4a2416,#7a3d1f)" },
+    { "title": "Spa & Wellness", "category": "Hospitality", "image": "", "color": "linear-gradient(135deg,#6b2d5c,#3d1536,#5a2450)" },
+    { "title": "Feature Wall", "category": "Residential", "image": "", "color": "linear-gradient(135deg,#c9a961,#8b7535,#c9a961)" },
+    { "title": "Corporate HQ", "category": "Commercial", "image": "", "color": "linear-gradient(135deg,#4a4a4a,#2a2a2a,#4a4a4a)" }
+  ],
+  "testimonials": [
+    { "quote": "Hussain Marble transformed our home into a palace. The quality is unmatched!", "author": "Ahmed Khan", "role": "Homeowner, Lahore" },
+    { "quote": "We worked on five commercial projects. Their craftsmanship is exceptional.", "author": "Sarah Malik", "role": "Architect, Islamabad" },
+    { "quote": "They helped us choose the perfect stone for our hotel lobby — guests are impressed.", "author": "Omar Sheikh", "role": "Hotel Owner, Karachi" }
+  ],
   "contact": {
-    "address": "Main Bypass More Khuda , District Nankana sahib,39120",
+    "address": "Main Bypass More Khuda, District Nankana Sahib, 39120",
     "phone": "+92 3044847750",
     "email": "info@hussainmarble.store"
   }
