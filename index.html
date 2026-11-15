@@ -1957,182 +1957,123 @@
     <div class="toast" id="toast">Saved successfully!</div>
 
     <script>
-      // Default Data
-      const defaultData = {
-        password: "admin123",
-        hero: {
-          subtitle: "Premium Natural Stone Since 1995",
-          title: "Sculpting Elegance\nFrom Nature's Core",
-          desc: "Discover the world's finest marble, granite, and exotic stones — hand-selected and crafted into timeless masterpieces for your space.",
-        },
-        about: {
-          title: "Three Decades of Stone Mastery",
-          text1:
-            "For over thirty years, Hussain Marble has been the trusted name in premium natural stone across Pakistan and beyond. From the quarries of Carrara to the mines of Pakistan, we source only the most exceptional materials.",
-          text2:
-            "Our master craftsmen transform raw stone into breathtaking works of art — floors that whisper luxury, walls that tell stories, and surfaces that stand the test of time.",
-        },
-        collections: [
-          {
-            name: "Carrara White",
-            type: "Italian Marble",
-            color:
-              "linear-gradient(135deg, #f5f5f5 0%, #d4d4d4 25%, #fff 50%, #c0c0c0 75%, #e8e8e8 100%)",
-          },
-          {
-            name: "Nero Marquina",
-            type: "Spanish Black Marble",
-            color:
-              "linear-gradient(135deg, #1a1a1a 0%, #333 25%, #0f0f0f 50%, #2a2a2a 75%, #1a1a1a 100%)",
-          },
-          {
-            name: "Azul Macaubas",
-            type: "Brazilian Quartzite",
-            color:
-              "linear-gradient(135deg, #1e3a5f 0%, #2c5282 25%, #1a365d 50%, #2b4c7e 75%, #1e3a5f 100%)",
-          },
-          {
-            name: "Verde Alpi",
-            type: "Italian Green Marble",
-            color:
-              "linear-gradient(135deg, #1f4d3a 0%, #2d6a4f 25%, #1b4332 50%, #2d6a4f 75%, #1f4d3a 100%)",
-          },
-          {
-            name: "Rosso Levanto",
-            type: "Italian Red Marble",
-            color:
-              "linear-gradient(135deg, #5c2e1f 0%, #8b4513 25%, #4a2416 50%, #7a3d1f 75%, #5c2e1f 100%)",
-          },
-          {
-            name: "Sahara Noir",
-            type: "Moroccan Gold Marble",
-            color:
-              "linear-gradient(135deg, #4a1942 0%, #6b2d5c 25%, #3d1536 50%, #5a2450 75%, #4a1942 100%)",
-          },
-        ],
-        services: [
-          {
-            icon: "fas fa-gem",
-            title: "Premium Supply",
-            desc: "Hand-selected marble, granite, onyx, and travertine sourced directly from the world's finest quarries.",
-          },
-          {
-            icon: "fas fa-tools",
-            title: "Expert Installation",
-            desc: "Our master craftsmen deliver flawless installation with precision-cut slabs and seamless finishes.",
-          },
-          {
-            icon: "fas fa-drafting-compass",
-            title: "Design Consultation",
-            desc: "Personalized guidance from our design experts to help you choose the perfect stone for your vision.",
-          },
-          {
-            icon: "fas fa-spray-can",
-            title: "Restoration & Polish",
-            desc: "Revitalize existing stone surfaces with our professional cleaning, polishing, and restoration services.",
-          },
-        ],
-        gallery: [
-          {
-            title: "Grand Villa Foyer",
-            category: "Residential",
-            color: "linear-gradient(135deg, #d4d4d4, #fff, #c0c0c0)",
-          },
-          {
-            title: "Executive Office",
-            category: "Commercial",
-            color: "linear-gradient(135deg, #1a1a1a, #333, #1a1a1a)",
-          },
-          {
-            title: "Luxury Bathroom",
-            category: "Residential",
-            color: "linear-gradient(135deg, #2c5282, #1a365d, #2b4c7e)",
-          },
-          {
-            title: "Hotel Lobby",
-            category: "Hospitality",
-            color: "linear-gradient(135deg, #2d6a4f, #1b4332, #2d6a4f)",
-          },
-          {
-            title: "Kitchen Countertop",
-            category: "Residential",
-            color: "linear-gradient(135deg, #8b4513, #4a2416, #7a3d1f)",
-          },
-          {
-            title: "Spa & Wellness",
-            category: "Hospitality",
-            color: "linear-gradient(135deg, #6b2d5c, #3d1536, #5a2450)",
-          },
-          {
-            title: "Feature Wall",
-            category: "Residential",
-            color: "linear-gradient(135deg, #c9a961, #8b7535, #c9a961)",
-          },
-          {
-            title: "Corporate HQ",
-            category: "Commercial",
-            color: "linear-gradient(135deg, #4a4a4a, #2a2a2a, #4a4a4a)",
-          },
-        ],
-        testimonials: [
-          {
-            quote:
-              "Hussain Marble transformed our home into a palace. The quality of their Carrara marble is unmatched, and the installation was flawless.",
-            author: "Ahmed Khan",
-            role: "Homeowner, Lahore",
-          },
-          {
-            quote:
-              "We've worked with them on five commercial projects. Their reliability, craftsmanship, and attention to detail are exceptional.",
-            author: "Sarah Malik",
-            role: "Architect, Islamabad",
-          },
-          {
-            quote:
-              "The consultation process was incredible. They helped us choose the perfect stone for our hotel lobby — guests are always impressed.",
-            author: "Omar Sheikh",
-            role: "Hotel Owner, Karachi",
-          },
-        ],
-        contact: {
-          address: "Main Showroom, Lahore, Pakistan",
-          phone: "+92 300 1234567",
-          email: "info@hussainmarble.store",
-        },
-      };
+   // Default fallback data
+const defaultData = {
+  hero: { subtitle: "Premium Natural Stone Since 1995", title: "Sculpting Elegance From Nature's Core", desc: "Discover the world's finest marble." },
+  about: { title: "Three Decades of Stone Mastery", text1: "For over thirty years...", text2: "Our master craftsmen..." },
+  collections: [{ name: "Carrara White", type: "Italian Marble", color: "linear-gradient(135deg, #f5f5f5, #d4d4d4, #fff)" }],
+  services: [{ icon: "fas fa-gem", title: "Premium Supply", desc: "Hand-selected marble." }],
+  testimonials: [{ quote: "Amazing quality!", author: "Ahmed Khan", role: "Homeowner" }],
+  contact: { address: "Lahore, Pakistan", phone: "+92 300 1234567", email: "info@hussainmarble.store" }
+};
 
-      // Load data
-      let data =
-        JSON.parse(localStorage.getItem("hussainData")) ||
-        JSON.parse(JSON.stringify(defaultData));
+let siteData = defaultData;
 
-      function saveData() {
-        localStorage.setItem("hussainData", JSON.stringify(data));
-      }
+// Fetch data from the JSON file
+fetch('data.json')
+  .then(response => response.json())
+  .then(data => {
+    siteData = data;
+    renderSite();
+  })
+  .catch(err => {
+    console.log("Using default data");
+    renderSite();
+  });
 
-      function showToast(msg) {
-        const t = document.getElementById("toast");
-        t.textContent = msg || "Saved successfully!";
-        t.classList.add("show");
-        setTimeout(() => t.classList.remove("show"), 2500);
-      }
+function renderSite() {
+  const d = siteData;
+  // Update Hero
+  if(document.getElementById('heroSubtitle')) document.getElementById('heroSubtitle').textContent = d.hero.subtitle;
+  if(document.getElementById('heroTitle')) document.getElementById('heroTitle').innerHTML = d.hero.title.replace(/\n/g, '<br>');
+  if(document.getElementById('heroDesc')) document.getElementById('heroDesc').textContent = d.hero.desc;
+  
+  // Update About
+  if(document.getElementById('aboutTitle')) document.getElementById('aboutTitle').textContent = d.about.title;
+  if(document.getElementById('aboutText1')) document.getElementById('aboutText1').textContent = d.about.text1;
+  if(document.getElementById('aboutText2')) document.getElementById('aboutText2').textContent = d.about.text2;
 
-      // Render public site
-      function renderSite() {
-        document.getElementById("heroSubtitle").textContent =
-          data.hero.subtitle;
-        document.getElementById("heroTitle").innerHTML =
-          data.hero.title.replace(/\n/g, "<br>");
-        document.getElementById("heroDesc").textContent = data.hero.desc;
-        document.getElementById("aboutTitle").textContent = data.about.title;
-        document.getElementById("aboutText1").textContent = data.about.text1;
-        document.getElementById("aboutText2").textContent = data.about.text2;
-        document.getElementById("contactAddress").textContent =
-          data.contact.address;
-        document.getElementById("contactPhone").textContent =
-          data.contact.phone;
-        document.getElementById("contactEmail").textContent =
-          data.contact.email;
+  // Update Contact
+  if(document.getElementById('contactAddress')) document.getElementById('contactAddress').textContent = d.contact.address;
+  if(document.getElementById('contactPhone')) document.getElementById('contactPhone').textContent = d.contact.phone;
+  if(document.getElementById('contactEmail')) document.getElementById('contactEmail').textContent = d.contact.email;
+
+  // Update Collections
+  const cg = document.getElementById('collectionsGrid');
+  if(cg) cg.innerHTML = d.collections.map(c => `
+    <div class="collection-card reveal">
+      <div class="collection-bg" style="background:${c.color}"></div>
+      <div class="collection-overlay">
+        <div class="collection-type">${c.type}</div>
+        <h3 class="collection-name">${c.name}</h3>
+        <a href="#contact" class="collection-link">View Details <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  `).join('');
+
+  // Update Services
+  const sg = document.getElementById('servicesGrid');
+  if(sg) sg.innerHTML = d.services.map(s => `
+    <div class="service-card reveal">
+      <div class="service-icon"><i class="${s.icon}"></i></div>
+      <h3 class="service-title">${s.title}</h3>
+      <p class="service-desc">${s.desc}</p>
+    </div>
+  `).join('');
+
+  // Update Testimonials
+  const tt = document.getElementById('testimonialTrack');
+  const tn = document.getElementById('testimonialNav');
+  if(tt && tn) {
+    tt.innerHTML = d.testimonials.map(t => `
+      <div class="testimonial">
+        <div class="testimonial-quote">${t.quote}</div>
+        <div class="testimonial-author">${t.author}</div>
+        <div class="testimonial-role">${t.role}</div>
+      </div>
+    `).join('');
+    tn.innerHTML = d.testimonials.map((_, i) => `
+      <button class="testimonial-dot ${i===0?'active':''}" onclick="goToTestimonial(${i})"></button>
+    `).join('');
+  }
+
+  initReveal();
+}
+
+function goToTestimonial(i) {
+  const track = document.getElementById('testimonialTrack');
+  if(track) track.style.transform = `translateX(-${i*100}%)`;
+  document.querySelectorAll('.testimonial-dot').forEach((d, idx) => d.classList.toggle('active', idx === i));
+}
+setInterval(() => {
+  const dots = document.querySelectorAll('.testimonial-dot');
+  if(dots.length > 0) {
+    let current = Array.from(dots).findIndex(d => d.classList.contains('active'));
+    goToTestimonial((current + 1) % dots.length);
+  }
+}, 5000);
+
+function initReveal() {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+}
+
+// Custom cursor & Nav scroll (Keep your existing cursor/nav code here if you had it)
+const cursor = document.getElementById('cursor');
+if(cursor) {
+  document.addEventListener('mousemove', e => { cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px'; });
+}
+window.addEventListener('scroll', () => {
+  const nav = document.getElementById('nav');
+  if(nav) nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+window.addEventListener('load', () => {
+  const loader = document.getElementById('loader');
+  if(loader) setTimeout(() => loader.classList.add('hidden'), 1500);
+});
+function submitForm(e) { e.preventDefault(); alert('Message sent!'); e.target.reset(); }
 
         // Collections
         const cg = document.getElementById("collectionsGrid");
