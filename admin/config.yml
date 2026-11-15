@@ -5,7 +5,7 @@ backend:
 media_folder: "images"
 public_folder: "/images"
 
-publish_mode: simple_workflow
+publish_mode: simple
 
 collections:
   - name: "site_data"
