@@ -81,50 +81,32 @@
       "color": "linear-gradient(135deg,#2d6a4f,#1b4332,#2d6a4f)"
     },
     {
-      "title": "Kitchen Countertop",
-      "category": "Residential",
-      "image": "",
+      "title": "Polished Granite Selection",
+      "category": "Natural Stone",
+      "image": "/images/whatsapp-image-2026-10-10-at-6.40.20-pm.jpeg",
       "color": "linear-gradient(135deg,#8b4513,#4a2416,#7a3d1f)"
-    },
-    {
-      "title": "Spa & Wellness",
-      "category": "Hospitality",
-      "image": "",
-      "color": "linear-gradient(135deg,#6b2d5c,#3d1536,#5a2450)"
-    },
-    {
-      "title": "Feature Wall",
-      "category": "Residential",
-      "image": "",
-      "color": "linear-gradient(135deg,#c9a961,#8b7535,#c9a961)"
-    },
-    {
-      "title": "Corporate HQ",
-      "category": "Commercial",
-      "image": "",
-      "color": "linear-gradient(135deg,#4a4a4a,#2a2a2a,#4a4a4a)"
     }
   ],
   "testimonials": [
     {
-      "quote": "Hussain Marble transformed our home into a palace. The quality is unmatched!",
-      "author": "Ahmed Khan",
-      "role": "Homeowner, Lahore"
+      "quote": "Hussain Marble Factory provided everything we needed for our new house, from the natural marble flooring to the gypsum ceiling tiles. Their direct delivery to Bucheki saved us a lot of time and freight costs!",
+      "author": "Muhammad Aslam",
+      "role": "Homeowner, Bucheki"
     },
     {
-      "quote": "We worked on five commercial projects. Their craftsmanship is exceptional.",
-      "author": "Sarah Malik",
-      "role": "Architect, Islamabad"
+      "quote": "Their fully digitized billing, transparent ledgers, and instant WhatsApp PDF invoices make managing my construction projects so much easier. The 4x4 marble medallion they crafted is a masterpiece.",
+      "author": "Tariq Builders",
+      "role": "Project Contractor"
     },
     {
-      "quote": "They helped us choose the perfect stone for our hotel lobby — guests are impressed.",
-      "author": "Omar Sheikh",
-      "role": "Hotel Owner, Karachi"
+      "quote": "\"Top-quality granite, A-grade gypsum powder, and excellent onsite cutting services. I highly recommend Ali Raza and his team for any commercial plaza construction in Nankana Sahib District.\"",
+      "author": "Waqas Ahmed",
+      "role": "Commercial Architect"
     }
   ],
   "contact": {
-    "address": "Main Bypass More Khuda, District Nankana Sahib, 39120",
-    "phone": "+92 3044847750",
+    "address": "7RX3+PX6, Mor Khunda, District Nankana Sahib, Punjab, Pakistan",
+    "phone": "0304 4847750 (Proprietor Iftikhar Hussain Chadhar)",
     "email": "info@hussainmarble.store"
   }
 }
