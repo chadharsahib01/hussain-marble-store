@@ -22,8 +22,8 @@
 <style>
 :root{
   --primary:#1a1a1a;
-  --secondary:#c9a961;
-  --secondary-light:#e4c97e;
+  --secondary:#8B6914;
+  --secondary-light:#A67C1A;
   --accent:#8b7355;
   --bg:#ffffff;
   --bg-alt:#f8f6f3;
@@ -53,8 +53,8 @@ a{text-decoration:none;color:inherit;}
 img{max-width:100%;display:block;}
 .container{max-width:1280px;margin:0 auto;padding:0 1.5rem;}
 
-/* TOP BAR */
-.top-bar{background:var(--primary);color:#fff;padding:0.6rem 0;font-size:0.8rem;border-bottom:1px solid rgba(201,169,97,0.3);}
+/* TOP BAR - Fix #11: Aligned with container */
+.top-bar{background:var(--primary);color:#fff;padding:0.6rem 0;font-size:0.8rem;border-bottom:1px solid rgba(139,105,20,0.3);}
 .top-bar .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;}
 .top-bar-left{display:flex;gap:1.5rem;align-items:center;}
 .top-bar-left span{display:flex;align-items:center;gap:0.5rem;}
@@ -105,7 +105,7 @@ img{max-width:100%;display:block;}
 .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
 .btn{padding:1rem 2rem;font-size:0.85rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;border:none;cursor:pointer;transition:all 0.3s;display:inline-flex;align-items:center;gap:0.5rem;}
 .btn-primary{background:var(--secondary);color:#fff;}
-.btn-primary:hover{background:var(--secondary-light);transform:translateY(-3px);box-shadow:0 10px 30px rgba(201,169,97,0.4);}
+.btn-primary:hover{background:var(--secondary-light);transform:translateY(-3px);box-shadow:0 10px 30px rgba(139,105,20,0.4);}
 .btn-outline{background:transparent;color:#fff;border:2px solid #fff;}
 .btn-outline:hover{background:#fff;color:var(--primary);}
 .btn-dark{background:var(--primary);color:#fff;}
@@ -128,7 +128,7 @@ img{max-width:100%;display:block;}
 .section-desc{color:var(--text-light);max-width:700px;margin:0 auto;font-size:1.05rem;}
 .section-divider{width:60px;height:3px;background:var(--secondary);margin:1rem auto;}
 
-/* CATEGORIES */
+/* CATEGORIES - Fix #10: Uniform grid */
 .categories{background:var(--bg-alt);}
 .categories-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;}
 .category-card{position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:8px;cursor:pointer;box-shadow:var(--shadow);transition:all 0.4s;}
@@ -136,26 +136,26 @@ img{max-width:100%;display:block;}
 .category-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 0.6s;}
 .category-card:hover .category-bg{transform:scale(1.1);}
 .category-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.3) 50%,transparent);display:flex;flex-direction:column;justify-content:flex-end;padding:2rem;color:#fff;}
-.category-name{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;margin-bottom:0.5rem;}
+.category-name{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;margin-bottom:0.5rem;}
 .category-type{font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--secondary);margin-bottom:1rem;}
 .category-price{font-size:0.9rem;color:var(--secondary-light);font-weight:600;margin-bottom:1rem;}
 .category-link{font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;display:inline-flex;align-items:center;gap:0.5rem;transition:gap 0.3s;}
 .category-card:hover .category-link{gap:1rem;}
 
-/* PRODUCTS GRID */
+/* PRODUCTS GRID - Fix #7: Standardized full-width dark buttons */
 .products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;}
-.product-card{background:var(--bg);border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:all 0.4s;}
+.product-card{background:var(--bg);border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:all 0.4s;display:flex;flex-direction:column;}
 .product-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--secondary);}
 .product-img{aspect-ratio:4/3;background-size:cover;background-position:center;position:relative;overflow:hidden;}
 .product-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.3),transparent);}
 .product-badge{position:absolute;top:1rem;left:1rem;background:var(--secondary);color:#fff;padding:0.3rem 0.8rem;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;border-radius:4px;}
-.product-info{padding:1.5rem;}
+.product-info{padding:1.5rem;flex:1;display:flex;flex-direction:column;}
 .product-category{font-size:0.75rem;color:var(--secondary);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.5rem;font-weight:600;}
 .product-name{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:0.5rem;color:var(--text);}
-.product-desc{font-size:0.9rem;color:var(--text-light);margin-bottom:1rem;line-height:1.6;}
+.product-desc{font-size:0.9rem;color:var(--text-light);margin-bottom:1rem;line-height:1.6;flex:1;}
 .product-footer{display:flex;justify-content:space-between;align-items:center;padding-top:1rem;border-top:1px solid var(--border);}
 .product-price{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--secondary);font-weight:700;}
-.product-btn{padding:0.5rem 1rem;background:var(--primary);color:#fff;border:none;border-radius:4px;font-size:0.75rem;font-weight:600;cursor:pointer;transition:all 0.3s;}
+.product-btn{padding:0.7rem 1rem;background:var(--primary);color:#fff;border:none;border-radius:4px;font-size:0.8rem;font-weight:600;cursor:pointer;transition:all 0.3s;flex:1;margin-left:1rem;}
 [data-theme="dark"] .product-btn{background:var(--secondary);color:var(--primary);}
 .product-btn:hover{background:var(--secondary);color:#fff;}
 
@@ -174,20 +174,21 @@ img{max-width:100%;display:block;}
 .about-feature h4{font-size:1rem;margin-bottom:0.3rem;color:var(--text);}
 .about-feature p{font-size:0.85rem;color:var(--text-light);margin:0;}
 
-/* SERVICES */
+/* SERVICES - Fix #8: Icons visible in circles */
 .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;}
 .service-card{padding:2.5rem 2rem;background:var(--bg);border:1px solid var(--border);border-radius:8px;transition:all 0.4s;position:relative;overflow:hidden;}
 .service-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:var(--secondary);transform:scaleX(0);transform-origin:left;transition:transform 0.4s;}
 .service-card:hover{transform:translateY(-10px);box-shadow:var(--shadow-lg);border-color:var(--secondary);}
 .service-card:hover::before{transform:scaleX(1);}
-.service-icon{width:70px;height:70px;background:var(--bg-alt);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:var(--secondary);margin-bottom:1.5rem;transition:all 0.3s;}
+.service-icon{width:70px;height:70px;background:var(--bg-alt);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:var(--secondary);margin-bottom:1.5rem;transition:all 0.3s;border:2px solid var(--secondary);}
 .service-card:hover .service-icon{background:var(--secondary);color:#fff;transform:rotateY(360deg);}
 .service-title{font-size:1.3rem;margin-bottom:1rem;color:var(--text);}
 .service-desc{color:var(--text-light);font-size:0.95rem;line-height:1.7;}
 
-/* GALLERY */
+/* GALLERY - Fix #4: Keyboard focus */
 .gallery{background:var(--bg-alt);}
-.gallery-scroll{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:1rem 0;}
+.gallery-scroll{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:1rem 0;outline:none;}
+.gallery-scroll:focus{outline:3px solid var(--secondary);outline-offset:2px;}
 .gallery-scroll::-webkit-scrollbar{height:8px;}
 .gallery-scroll::-webkit-scrollbar-thumb{background:var(--secondary);border-radius:4px;}
 .gallery-track{display:flex;gap:1.5rem;padding:0 1.5rem;width:max-content;}
@@ -253,13 +254,13 @@ img{max-width:100%;display:block;}
 .form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--secondary);}
 .form-group textarea{resize:vertical;min-height:120px;}
 
-/* FOOTER */
+/* FOOTER - Fix #9: Brand icons visible */
 .footer{background:var(--primary);color:#fff;padding:4rem 0 2rem;}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
 .footer-brand .logo{color:#fff;margin-bottom:1rem;}
 .footer-brand p{color:rgba(255,255,255,0.7);margin-bottom:1.5rem;line-height:1.7;}
 .footer-social{display:flex;gap:0.8rem;}
-.footer-social a{width:40px;height:40px;border:1px solid rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;transition:all 0.3s;}
+.footer-social a{width:44px;height:44px;border:1px solid rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;transition:all 0.3s;font-size:1.1rem;}
 .footer-social a:hover{background:var(--secondary);border-color:var(--secondary);transform:translateY(-3px);}
 .footer-col h4{font-size:1rem;margin-bottom:1.5rem;color:var(--secondary);letter-spacing:0.1em;text-transform:uppercase;}
 .footer-col ul{list-style:none;}
@@ -268,7 +269,7 @@ img{max-width:100%;display:block;}
 .footer-col ul a:hover{color:var(--secondary);padding-left:5px;}
 .footer-bottom{padding-top:2rem;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:rgba(255,255,255,0.6);font-size:0.85rem;}
 
-/* FLOATING */
+/* FLOATING - Fix #2: aria-labels */
 .fab{position:fixed;width:55px;height:55px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;text-decoration:none;z-index:999;transition:all 0.3s;box-shadow:0 5px 20px rgba(0,0,0,0.3);}
 .fab:hover{transform:scale(1.15);}
 .fab-whatsapp{bottom:1.5rem;left:1.5rem;background:#25D366;color:#fff;animation:pulse 2s infinite;}
@@ -332,10 +333,10 @@ img{max-width:100%;display:block;}
       <a href="#contact" class="nav-link">Contact</a>
     </nav>
     <div class="header-actions">
-      <button class="lang-btn" onclick="toggleLang()" id="langBtn">UR</button>
-      <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" aria-label="Theme"><i class="fas fa-moon"></i></button>
+      <button class="lang-btn" onclick="toggleLang()" id="langBtn" aria-label="Switch language">اردو</button>
+      <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" aria-label="Toggle dark mode"><i class="fas fa-moon"></i></button>
       <a href="#contact" class="quote-btn">Get Quote</a>
-      <button class="menu-toggle" onclick="document.getElementById('mobileMenu').classList.add('active')" aria-label="Menu"><i class="fas fa-bars"></i></button>
+      <button class="menu-toggle" onclick="document.getElementById('mobileMenu').classList.add('active')" aria-label="Open menu"><i class="fas fa-bars"></i></button>
     </div>
   </div>
 </header>
@@ -344,7 +345,7 @@ img{max-width:100%;display:block;}
 <div class="mobile-menu" id="mobileMenu">
   <div class="mobile-menu-header">
     <div class="logo">HUSSAIN <span class="gold">MARBLE</span></div>
-    <button onclick="document.getElementById('mobileMenu').classList.remove('active')" style="background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer;"><i class="fas fa-times"></i></button>
+    <button onclick="document.getElementById('mobileMenu').classList.remove('active')" style="background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer;" aria-label="Close menu"><i class="fas fa-times"></i></button>
   </div>
   <a href="#home" onclick="document.getElementById('mobileMenu').classList.remove('active')">Home</a>
   <a href="#about" onclick="document.getElementById('mobileMenu').classList.remove('active')">About</a>
@@ -378,7 +379,7 @@ img{max-width:100%;display:block;}
   </div>
 </section>
 
-<!-- CATEGORIES -->
+<!-- CATEGORIES - Fix #10: Uniform grid -->
 <section class="section categories" id="collections">
   <div class="container">
     <div class="section-header">
@@ -414,7 +415,7 @@ img{max-width:100%;display:block;}
   </div>
 </section>
 
-<!-- PRODUCTS -->
+<!-- PRODUCTS - Fix #7, #12: Standardized buttons + unique descriptions -->
 <section class="section" id="products">
   <div class="container">
     <div class="section-header">
@@ -427,7 +428,7 @@ img{max-width:100%;display:block;}
   </div>
 </section>
 
-<!-- GALLERY -->
+<!-- GALLERY - Fix #4: Keyboard focus -->
 <section class="section gallery" id="gallery">
   <div class="container">
     <div class="section-header">
@@ -436,7 +437,7 @@ img{max-width:100%;display:block;}
       <div class="section-divider"></div>
       <p class="section-desc">Swipe to explore our finest work and transformations.</p>
     </div>
-    <div class="gallery-scroll" id="galleryScroll"></div>
+    <div class="gallery-scroll" id="galleryScroll" tabindex="0" aria-label="Project gallery - use arrow keys to scroll through images"></div>
   </div>
 </section>
 
@@ -459,7 +460,7 @@ img{max-width:100%;display:block;}
   </div>
 </section>
 
-<!-- SERVICES -->
+<!-- SERVICES - Fix #8: Icons visible -->
 <section class="section" id="services" style="background:var(--bg-alt);">
   <div class="container">
     <div class="section-header">
@@ -485,7 +486,7 @@ img{max-width:100%;display:block;}
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
+<!-- TESTIMONIALS - Fix #3: aria-labels on dots -->
 <section class="section testimonials">
   <div class="container">
     <div class="section-header">
@@ -500,7 +501,7 @@ img{max-width:100%;display:block;}
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- CONTACT - Fix #1: aria-labels on form inputs, Fix #5: iframe title, Fix #14: Request Quote button -->
 <section class="section contact" id="contact">
   <div class="container">
     <div class="section-header">
@@ -520,22 +521,34 @@ img{max-width:100%;display:block;}
           <li><i class="fas fa-clock"></i><span>Mon - Sat: 9:00 AM - 8:00 PM <span id="openBadge"></span></span></li>
         </ul>
         <div class="map-container">
-          <iframe src="https://www.google.com/maps?q=Mor+Khunda,Nankana+Sahib,Punjab,Pakistan&output=embed" loading="lazy" allowfullscreen></iframe>
+          <iframe src="https://www.google.com/maps?q=Mor+Khunda,Nankana+Sahib,Punjab,Pakistan&output=embed" loading="lazy" allowfullscreen title="Hussain Marble Factory Location Map"></iframe>
         </div>
       </div>
       <form class="contact-form" name="contact" method="POST" data-netlify="true" id="contactForm">
         <h3>Request a Quote</h3>
-        <div class="form-group"><label>Your Name</label><input type="text" name="name" required></div>
-        <div class="form-group"><label>Email Address</label><input type="email" name="email" required></div>
-        <div class="form-group"><label>Phone Number</label><input type="tel" name="phone"></div>
-        <div class="form-group"><label>Tell us about your project</label><textarea name="message" required></textarea></div>
-        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send Message <i class="fas fa-paper-plane"></i></button>
+        <div class="form-group">
+          <label for="formName">Your Name</label>
+          <input type="text" id="formName" name="name" aria-label="Full Name" required>
+        </div>
+        <div class="form-group">
+          <label for="formEmail">Email Address</label>
+          <input type="email" id="formEmail" name="email" aria-label="Email Address" required>
+        </div>
+        <div class="form-group">
+          <label for="formPhone">Phone Number</label>
+          <input type="tel" id="formPhone" name="phone" aria-label="Phone Number">
+        </div>
+        <div class="form-group">
+          <label for="formMessage">Tell us about your project</label>
+          <textarea id="formMessage" name="message" aria-label="Project details" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Request Quote <i class="fas fa-paper-plane"></i></button>
       </form>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- FOOTER - Fix #9: Brand icons visible -->
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
@@ -569,24 +582,24 @@ img{max-width:100%;display:block;}
   </div>
 </footer>
 
-<!-- FLOATING BUTTONS -->
-<a href="/admin/" class="fab fab-admin" title="Admin"><i class="fas fa-cog"></i></a>
-<a href="https://wa.me/923044847750?text=Hello%20Hussain%20Marble%20Factory!" target="_blank" class="fab fab-whatsapp"><i class="fab fa-whatsapp"></i></a>
-<a href="tel:+923044847750" class="fab fab-call"><i class="fas fa-phone"></i></a>
-<button class="fab fab-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
+<!-- FLOATING BUTTONS - Fix #2: aria-labels -->
+<a href="/admin/" class="fab fab-admin" title="Admin Panel" aria-label="Admin Panel"><i class="fas fa-cog"></i></a>
+<a href="https://wa.me/923044847750?text=Hello%20Hussain%20Marble%20Factory!" target="_blank" class="fab fab-whatsapp" aria-label="Contact us on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<a href="tel:+923044847750" class="fab fab-call" aria-label="Call us"><i class="fas fa-phone"></i></a>
+<button class="fab fab-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
 <script>
-// DEFAULT DATA
+// DEFAULT DATA - Fix #12: Unique product descriptions, Fix #15: Simplified medallions name
 const DEFAULT={
   hero:{subtitle:"Premium Marble, Granite & Gypsum Supplier",title:"Floor-to-Ceiling Perfection with Hussain Marble Factory",desc:"Established in 2010, your trusted source for premium marble, granite, ceramic tiles, and A-grade gypsum powder with factory-direct pricing.",image:""},
   about:{title:"About Hussain Marble Factory",text1:"Founded in 2010 in the heart of Mor Khunda, Hussain Marble Factory has grown into the leading natural stone and construction material supplier in the Nankana Sahib District.",text2:"From precision marble cutting and crafting our signature 4x4 stone pools to producing fresh A-grade gypsum ceiling tiles onsite, our dedicated team handles every project with expertise.",image:""},
   collections:[
-    {name:"Premium Natural Marble",type:"Flooring & Decor",price:"Rs. 180/sqft",image:"",color:"linear-gradient(135deg,#e8e8e8,#f5f5f5,#fff,#d4d4d4)"},
-    {name:"High-Grade Granite",type:"Countertops",price:"Rs. 250/sqft",image:"",color:"linear-gradient(135deg,#2a2a2a,#1a1a1a,#0f0f0f)"},
-    {name:"Ceramic Tiles",type:"Versatile Flooring",price:"Rs. 85/sqft",image:"",color:"linear-gradient(135deg,#d4c4a8,#f5f0e8,#fff)"},
-    {name:"A-Grade Gypsum Powder",type:"Ceiling Material",price:"Rs. 1,200/bag",image:"",color:"linear-gradient(135deg,#fff,#f0f0f0,#e8e8e8)"},
-    {name:"Gypsum Ceiling Tiles",type:"False Ceiling",price:"Rs. 95/sqft",image:"",color:"linear-gradient(135deg,#fff,#e8f4f8,#d4e8f0)"},
-    {name:"Custom 4x4 Marble Medallions",type:"Signature Crafting",price:"Rs. 9,000/piece",image:"",color:"linear-gradient(135deg,#c9a961,#e4c97e,#fff)"}
+    {name:"Premium Natural Marble",type:"Flooring & Decor",price:"Rs. 180/sqft",image:"",color:"linear-gradient(135deg,#e8e8e8,#f5f5f5,#fff,#d4d4d4)",desc:"Authentic, high-durability marble slabs sourced for their unique veining and timeless elegance."},
+    {name:"High-Grade Granite",type:"Countertops",price:"Rs. 250/sqft",image:"",color:"linear-gradient(135deg,#2a2a2a,#1a1a1a,#0f0f0f)",desc:"Dense, speckled granite built to withstand heavy use while maintaining a polished, professional finish."},
+    {name:"Ceramic Tiles",type:"Versatile Flooring",price:"Rs. 85/sqft",image:"",color:"linear-gradient(135deg,#d4c4a8,#f5f0e8,#fff)",desc:"Modern ceramic tiles offering versatile patterns and colors for both residential and commercial flooring."},
+    {name:"A-Grade Gypsum Powder",type:"Ceiling Material",price:"Rs. 1,200/bag",image:"",color:"linear-gradient(135deg,#fff,#f0f0f0,#e8e8e8)",desc:"Pure, finely-milled gypsum powder ideal for smooth ceiling finishes and decorative moldings."},
+    {name:"Gypsum Ceiling Tiles",type:"False Ceiling",price:"Rs. 95/sqft",image:"",color:"linear-gradient(135deg,#fff,#e8f4f8,#d4e8f0)",desc:"Freshly molded gypsum ceiling tiles providing clean lines and excellent acoustic insulation."},
+    {name:"Custom Marble Medallions",type:"Signature Crafting",price:"Rs. 9,000/piece",image:"",color:"linear-gradient(135deg,#c9a961,#e4c97e,#fff)",desc:"Hand-crafted 4x4 marble flower medallions — our signature piece of artisan stone craftsmanship."}
   ],
   services:[
     {icon:"fas fa-cut",title:"Precision Cutting & Polishing",desc:"Expert onsite marble and granite cutting, custom stone pool fabrication, and professional polishing for flawless finishes."},
@@ -620,9 +633,9 @@ function mergeData(cms){
     hero:{...DEFAULT.hero,...(cms.hero||{})},
     about:{...DEFAULT.about,...(cms.about||{})},
     contact:{...DEFAULT.contact,...(cms.contact||{})},
-    collections:(cms.collections&&cms.collections.length>0)?cms.collections.map(c=>({...DEFAULT.collections[0],...c})):DEFAULT.collections,
-    services:(cms.services&&cms.services.length>0)?cms.services.map(s=>({...DEFAULT.services[0],...s})):DEFAULT.services,
-    gallery:(cms.gallery&&cms.gallery.length>0)?cms.gallery.map(g=>({...DEFAULT.gallery[0],...g})):DEFAULT.gallery,
+    collections:(cms.collections&&cms.collections.length>0)?cms.collections.map((c,i)=>({...DEFAULT.collections[i%DEFAULT.collections.length],...c})):DEFAULT.collections,
+    services:(cms.services&&cms.services.length>0)?cms.services.map((s,i)=>({...DEFAULT.services[i%DEFAULT.services.length],...s})):DEFAULT.services,
+    gallery:(cms.gallery&&cms.gallery.length>0)?cms.gallery.map((g,i)=>({...DEFAULT.gallery[i%DEFAULT.gallery.length],...g})):DEFAULT.gallery,
     testimonials:(cms.testimonials&&cms.testimonials.length>0)?cms.testimonials:DEFAULT.testimonials
   };
 }
@@ -649,20 +662,20 @@ function render(){
   set('contactAddress',d.contact.address);
   set('contactEmail',d.contact.email);
   
-  // Categories
+  // Categories - Fix #10: Uniform grid
   const cg=document.getElementById('categoriesGrid');
   if(cg){
     cg.innerHTML=d.collections.map(c=>'<div class="category-card"><div class="category-bg" style="'+bgFor(c)+'"></div><div class="category-overlay"><div class="category-type">'+(c.type||'')+'</div><h3 class="category-name">'+(c.name||'')+'</h3><div class="category-price">'+(c.price||'')+'</div><a href="https://wa.me/923044847750?text='+encodeURIComponent('I\'m interested in '+(c.name||''))+'" target="_blank" class="category-link">Get Quote <i class="fas fa-arrow-right"></i></a></div></div>').join('');
   }
   
-  // Products (first 4 collections as featured)
+  // Products - Fix #7: Standardized full-width buttons, Fix #12: Unique descriptions
   const pg=document.getElementById('productsGrid');
   if(pg){
     const featured=d.collections.slice(0,4);
-    pg.innerHTML=featured.map((c,i)=>'<div class="product-card"><div class="product-img" style="'+bgFor(c)+'"><span class="product-badge">Featured</span></div><div class="product-info"><div class="product-category">'+(c.type||'')+'</div><h3 class="product-name">'+(c.name||'')+'</h3><p class="product-desc">Premium quality '+(c.name||'stone')+' with factory-direct pricing and expert installation services.</p><div class="product-footer"><span class="product-price">'+(c.price||'')+'</span><a href="https://wa.me/923044847750?text='+encodeURIComponent('Quote for '+(c.name||''))+'" target="_blank" class="product-btn">Get Quote</a></div></div></div>').join('');
+    pg.innerHTML=featured.map(c=>'<div class="product-card"><div class="product-img" style="'+bgFor(c)+'"><span class="product-badge">Featured</span></div><div class="product-info"><div class="product-category">'+(c.type||'')+'</div><h3 class="product-name">'+(c.name||'')+'</h3><p class="product-desc">'+(c.desc||'Premium quality stone with factory-direct pricing.')+'</p><div class="product-footer"><span class="product-price">'+(c.price||'')+'</span><a href="https://wa.me/923044847750?text='+encodeURIComponent('Quote for '+(c.name||''))+'" target="_blank" class="product-btn">Get Quote</a></div></div></div>').join('');
   }
   
-  // Services
+  // Services - Fix #8: Icons visible in circles
   const sg=document.getElementById('servicesGrid');
   if(sg){
     sg.innerHTML=d.services.map(s=>'<div class="service-card"><div class="service-icon"><i class="'+(s.icon||'fas fa-star')+'"></i></div><h3 class="service-title">'+(s.title||'')+'</h3><p class="service-desc">'+(s.desc||'')+'</p></div>').join('');
@@ -674,12 +687,12 @@ function render(){
     gg.innerHTML='<div class="gallery-track">'+d.gallery.map(g=>'<div class="gallery-item"><div class="gallery-bg" style="'+bgFor(g)+'"></div><div class="gallery-overlay"><h4>'+(g.title||'')+'</h4><p>'+(g.category||'')+'</p></div></div>').join('')+'</div>';
   }
   
-  // Testimonials
+  // Testimonials - Fix #3: aria-labels on dots
   const tt=document.getElementById('testimonialTrack');
   const td=document.getElementById('testimonialDots');
   if(tt&&td){
     tt.innerHTML=d.testimonials.map(t=>'<div class="testimonial"><div class="testimonial-quote">'+(t.quote||'')+'</div><div class="testimonial-author">'+(t.author||'')+'</div><div class="testimonial-role">'+(t.role||'')+'</div></div>').join('');
-    td.innerHTML=d.testimonials.map((_,i)=>'<button class="testimonial-dot'+(i===0?' active':'')+'" onclick="goTest('+i+')"></button>').join('');
+    td.innerHTML=d.testimonials.map((_,i)=>'<button class="testimonial-dot'+(i===0?' active':'')+'" onclick="goTest('+i+')" aria-label="Go to testimonial slide '+(i+1)+'"></button>').join('');
   }
   
   // Counter animation
@@ -733,7 +746,7 @@ function toggleTheme(){
   if(icon)icon.className=next==='light'?'fas fa-moon':'fas fa-sun';
 }
 
-// LANG
+// LANG - Fix #13: "اردو" instead of "UR"
 const translations={
   en:{tag:"Premium Marble, Granite & Gypsum Supplier",title:"Floor-to-Ceiling Perfection with Hussain Marble Factory",desc:"Established in 2010, your trusted source for premium marble, granite, ceramic tiles, and A-grade gypsum powder with factory-direct pricing.",aboutTitle:"About Hussain Marble Factory",about1:"Founded in 2010 in the heart of Mor Khunda, Hussain Marble Factory has grown into the leading natural stone and construction material supplier in the Nankana Sahib District.",about2:"From precision marble cutting and crafting our signature 4x4 stone pools to producing fresh A-grade gypsum ceiling tiles onsite, our dedicated team handles every project with expertise.",address:"7RX3+PX6, Mor Khunda, District Nankana Sahib, Punjab, Pakistan"},
   ur:{tag:"نانکانہ صاحب ضلع میں پریمیم ماربل، گرینائٹ اور جپسم سپلائر",title:"حسین ماربل فیکٹری کے ساتھ فلور ٹو سیلنگ کمال",desc:"2010 میں قائم، آپ کا قابل اعتماد ذریعہ پریمیم ماربل، گرینائٹ، سیرامک ٹائلز، اور اے گریڈ جپسم پاؤڈر کے لیے۔",aboutTitle:"حسین ماربل فیکٹری کے بارے میں",about1:"2010 میں مور کندہ کے دل میں قائم، حسین ماربل فیکٹری نانکانہ صاحب ضلع میں قدرتی پتھر اور تعمیراتی مواد کے سپلائر کے طور پر ترقی پائی ہے۔",about2:"پریسژن ماربل کٹنگ سے لے کر ہمارے سگنیچر 4x4 اسٹون پولز بنانے تک، ہماری ٹیم ہر پروجیکٹ مہارت سے سنبھالتی ہے۔",address:"7RX3+PX6، مور کندہ، ضلع نانکانہ صاحب، پنجاب، پاکستان"}
@@ -744,7 +757,7 @@ function toggleLang(){
   document.body.classList.toggle('urdu',curLang==='ur');
   document.documentElement.lang=curLang;
   const btn=document.getElementById('langBtn');
-  if(btn)btn.textContent=curLang==='en'?'UR':'EN';
+  if(btn)btn.textContent=curLang==='en'?'اردو':'EN';
   const t=translations[curLang];
   const set=(id,val)=>{const el=document.getElementById(id);if(el)el.textContent=val;};
   const setHTML=(id,val)=>{const el=document.getElementById(id);if(el)el.innerHTML=val;};
