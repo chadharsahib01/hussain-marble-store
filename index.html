@@ -1,520 +1,552 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-  <title>Hussain Marble Factory - Premium Marble, Granite & Gypsum | Nankana Sahib</title>
-  <meta name="description" content="Floor-to-Ceiling Perfection. Premium marble, granite, ceramic tiles, and A-grade gypsum powder. Established 2010, Nankana Sahib District." />
-  <meta property="og:title" content="Hussain Marble Factory" />
-  <meta property="og:description" content="Premium natural stone supplier in Nankana Sahib District" />
-  <meta property="og:type" content="website" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪨</text></svg>" />
-  
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  <script>
-    if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", function(user) {
-        if (!user) { window.netlifyIdentity.on("login", function() { document.location.href = "/admin/"; }); }
-      });
-    }
-  </script>
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  
-  <style>
-    :root {
-      --gold: #c9a961;
-      --gold-light: #e4c97e;
-      --gold-dark: #a8893d;
-      --dark: #0a0a0a;
-      --dark-2: #141414;
-      --dark-3: #1f1f1f;
-      --text: #e8e8e8;
-      --text-muted: #8a8a8a;
-      --text-light: #b0b0b0;
-      --transition: cubic-bezier(0.4, 0, 0.2, 1);
-      --bg: #0a0a0a;
-      --surface: #141414;
-      --card: #1f1f1f;
-    }
-    
-    [data-theme="light"] {
-      --dark: #f5f5f5;
-      --dark-2: #ffffff;
-      --dark-3: #e8e8e8;
-      --text: #1a1a1a;
-      --text-muted: #666666;
-      --text-light: #333333;
-      --bg: #f5f5f5;
-      --surface: #ffffff;
-      --card: #e8e8e8;
-    }
-    
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: "Inter", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      overflow-x: hidden;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-      transition: background 0.5s var(--transition), color 0.5s var(--transition);
-    }
-    body.urdu { font-family: "Noto Nastaliq Urdu", serif; direction: rtl; }
-    body.urdu h1, body.urdu h2, body.urdu h3 { font-family: "Noto Nastaliq Urdu", serif; font-size: 1.8rem !important; }
-    h1, h2, h3, h4, h5 { font-family: "Playfair Display", serif; font-weight: 700; letter-spacing: -0.02em; line-height: 1.2; }
-    
-    ::-webkit-scrollbar { width: 10px; }
-    ::-webkit-scrollbar-track { background: var(--dark); }
-    ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 5px; }
-    ::selection { background: var(--gold); color: var(--dark); }
-    
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 9998;
-      opacity: 0.03;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-    }
-    
-    .progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-light)); z-index: 10001; width: 0%; transition: width 0.1s; }
-    
-    .cursor { position: fixed; width: 20px; height: 20px; border: 2px solid var(--gold); border-radius: 50%; pointer-events: none; z-index: 9999; transition: all 0.3s var(--transition); transform: translate(-50%, -50%); mix-blend-mode: difference; }
-    .cursor.hover { width: 60px; height: 60px; background: rgba(201, 169, 97, 0.15); border-width: 3px; }
-    
-    .loader { position: fixed; inset: 0; background: var(--dark); z-index: 10000; display: flex; align-items: center; justify-content: center; flex-direction: column; transition: opacity 1s var(--transition), visibility 1s; }
-    .loader.hidden { opacity: 0; visibility: hidden; }
-    .loader-logo { font-family: "Playfair Display", serif; font-size: 3.5rem; color: var(--gold); letter-spacing: 0.4em; font-weight: 900; animation: fadeInUp 1s var(--transition); }
-    .loader-subtitle { font-size: 0.9rem; color: var(--text-muted); letter-spacing: 0.3em; margin-top: 1rem; animation: fadeInUp 1s 0.3s var(--transition) both; }
-    .loader-bar { width: 200px; height: 2px; background: var(--dark-3); margin-top: 3rem; overflow: hidden; animation: fadeInUp 1s 0.5s var(--transition) both; }
-    .loader-bar::after { content: ""; display: block; width: 100%; height: 100%; background: linear-gradient(90deg, var(--gold), var(--gold-light)); animation: load 2s var(--transition); }
-    @keyframes load { from { transform: translateX(-100%); } to { transform: translateX(0); } }
-    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-    
-    .nav { position: fixed; top: 0; left: 0; right: 0; padding: 1.5rem 2rem; display: flex; justify-content: space-between; align-items: center; z-index: 1000; transition: all 0.5s var(--transition); background: transparent; }
-    .nav.scrolled { background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(20px); padding: 1rem 2rem; border-bottom: 1px solid rgba(201, 169, 97, 0.15); }
-    [data-theme="light"] .nav.scrolled { background: rgba(245, 245, 245, 0.95); }
-    .nav-logo { font-family: "Playfair Display", serif; font-size: 1.4rem; color: var(--gold); letter-spacing: 0.15em; text-decoration: none; font-weight: 700; transition: all 0.3s; }
-    .nav-logo:hover { color: var(--gold-light); }
-    .nav-logo span { color: var(--text); font-weight: 300; }
-    .nav-links { display: flex; gap: 2rem; list-style: none; align-items: center; }
-    .nav-links a { color: var(--text); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; position: relative; transition: color 0.3s; font-weight: 500; }
-    .nav-links a::after { content: ""; position: absolute; bottom: -8px; left: 0; width: 0; height: 1px; background: var(--gold); transition: width 0.4s var(--transition); }
-    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
-    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
-    .nav-cta { padding: 0.7rem 1.5rem; background: transparent; border: 1px solid var(--gold); color: var(--gold); text-decoration: none; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; transition: all 0.4s var(--transition); font-weight: 600; }
-    .nav-cta:hover { background: var(--gold); color: var(--dark); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(201, 169, 97, 0.3); }
-    .mobile-toggle { display: none; background: none; border: none; color: var(--gold); font-size: 1.5rem; cursor: pointer; z-index: 1001; }
-    .theme-toggle { background: none; border: 1px solid var(--gold); color: var(--gold); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.3s; font-size: 1rem; }
-    .theme-toggle:hover { background: var(--gold); color: var(--dark); transform: rotate(180deg); }
-    .lang-toggle { background: none; border: 1px solid var(--gold); color: var(--gold); padding: 0.5rem 1rem; border-radius: 20px; cursor: pointer; font-size: 0.75rem; letter-spacing: 0.1em; font-weight: 600; transition: all 0.3s; }
-    .lang-toggle:hover { background: var(--gold); color: var(--dark); }
-    
-    .mobile-menu { display: none; position: fixed; inset: 0; background: rgba(10, 10, 10, 0.98); z-index: 999; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; opacity: 0; visibility: hidden; transition: all 0.4s var(--transition); }
-    .mobile-menu.active { display: flex; opacity: 1; visibility: visible; }
-    .mobile-menu a { color: var(--text); text-decoration: none; font-size: 1.8rem; font-family: "Playfair Display", serif; transition: color 0.3s; text-align: center; }
-    .mobile-menu a:hover { color: var(--gold); }
-    .mobile-close { position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; color: var(--gold); font-size: 2rem; cursor: pointer; z-index: 1002; }
-    
-    .hero { min-height: 100vh; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; padding: 6rem 1.5rem 3rem; }
-    .hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; background-repeat: no-repeat; transition: opacity 1s; }
-    .hero-bg::before { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10, 10, 10, 0.75) 0%, rgba(10, 10, 10, 0.5) 50%, rgba(10, 10, 10, 0.75) 100%); }
-    .hero-bg::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 0%, rgba(10, 10, 10, 0.8) 100%); }
-    #particles-canvas { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
-    .hero-content { position: relative; text-align: center; z-index: 2; padding: 0 1rem; max-width: 1200px; width: 100%; }
-    .hero-subtitle { color: var(--gold); font-size: 0.85rem; letter-spacing: 0.4em; text-transform: uppercase; margin-bottom: 1.5rem; font-weight: 500; line-height: 1.4; }
-    .hero-title { font-size: clamp(2.2rem, 6vw, 5rem); line-height: 1.1; margin-bottom: 1.5rem; background: linear-gradient(135deg, #fff 0%, var(--gold) 50%, #fff 100%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: shimmer 3s linear infinite; font-weight: 900; word-wrap: break-word; overflow-wrap: break-word; }
-    @keyframes shimmer { to { background-position: 200% center; } }
-    .hero-desc { font-size: 1rem; color: var(--text-light); max-width: 700px; margin: 0 auto 2rem; line-height: 1.7; padding: 0 0.5rem; }
-    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
-    .btn-primary { padding: 1rem 2rem; background: var(--gold); color: var(--dark); border: none; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: all 0.4s var(--transition); text-decoration: none; font-weight: 600; position: relative; overflow: hidden; }
-    .btn-primary::before { content: ""; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent); transition: left 0.6s; }
-    .btn-primary:hover::before { left: 100%; }
-    .btn-primary:hover { background: var(--gold-light); transform: translateY(-3px); box-shadow: 0 15px 40px rgba(201, 169, 97, 0.4); }
-    .btn-secondary { padding: 1rem 2rem; background: transparent; color: var(--text); border: 1px solid rgba(255, 255, 255, 0.3); font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: all 0.4s var(--transition); text-decoration: none; font-weight: 500; }
-    .btn-secondary:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-3px); }
-    .hero-scroll { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); color: var(--gold); font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; animation: bounce 2s infinite; opacity: 0.7; z-index: 2; }
-    @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(-15px); } }
-    
-    .marquee { background: var(--gold); color: var(--dark); padding: 1rem 0; overflow: hidden; white-space: nowrap; position: relative; }
-    .marquee::before, .marquee::after { content: ""; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; }
-    .marquee::before { left: 0; background: linear-gradient(90deg, var(--gold), transparent); }
-    .marquee::after { right: 0; background: linear-gradient(-90deg, var(--gold), transparent); }
-    .marquee-track { display: inline-block; animation: scroll 40s linear infinite; }
-    .marquee:hover .marquee-track { animation-play-state: paused; }
-    .marquee-track span { font-family: "Playfair Display", serif; font-size: 1rem; margin: 0 2rem; letter-spacing: 0.1em; font-weight: 600; }
-    .marquee-track i { margin: 0 0.8rem; font-size: 0.7rem; }
-    @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-    
-    .section { padding: 5rem 1.5rem; position: relative; }
-    .section-divider { width: 80px; height: 2px; background: linear-gradient(90deg, transparent, var(--gold), transparent); margin: 0 auto 2rem; }
-    .section-header { text-align: center; margin-bottom: 4rem; }
-    .section-label { color: var(--gold); font-size: 0.75rem; letter-spacing: 0.4em; text-transform: uppercase; margin-bottom: 1rem; display: block; font-weight: 600; }
-    .section-title { font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 1.5rem; background: linear-gradient(135deg, #fff 0%, var(--text-light) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-weight: 900; word-wrap: break-word; overflow-wrap: break-word; }
-    [data-theme="light"] .section-title { background: linear-gradient(135deg, #1a1a1a 0%, #666 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .section-desc { color: var(--text-muted); max-width: 700px; margin: 0 auto; font-size: 1rem; line-height: 1.7; }
-    
-    .about { background: var(--dark-2); }
-    .about-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; align-items: center; max-width: 1400px; margin: 0 auto; }
-    .about-image { aspect-ratio: 4/5; background-size: cover; background-position: center; background-repeat: no-repeat; position: relative; overflow: hidden; box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5); }
-    .about-image::before { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(201, 169, 97, 0.1) 0%, transparent 50%); }
-    .about-image::after { content: "EST. 2010"; position: absolute; bottom: 2rem; left: 2rem; font-family: "Playfair Display", serif; font-size: 1.3rem; color: var(--gold); letter-spacing: 0.2em; font-weight: 700; }
-    .about-content h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 1.5rem; font-weight: 900; word-wrap: break-word; }
-    .about-content p { color: var(--text-light); margin-bottom: 1.2rem; font-size: 1rem; line-height: 1.7; }
-    .about-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1); }
-    .stat-num { font-family: "Playfair Display", serif; font-size: 2.5rem; color: var(--gold); display: block; font-weight: 900; }
-    .stat-label { font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.15em; text-transform: uppercase; font-weight: 500; }
-    
-    .collections-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 1400px; margin: 0 auto; }
-    .collection-card { position: relative; aspect-ratio: 4/5; overflow: hidden; cursor: pointer; transition: all 0.6s var(--transition); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); transform-style: preserve-3d; }
-    .collection-card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5); }
-    .collection-bg { position: absolute; inset: 0; background-size: cover; background-position: center; background-repeat: no-repeat; transition: transform 1s var(--transition); }
-    .collection-card:hover .collection-bg { transform: scale(1.15); }
-    .collection-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.4) 50%, transparent 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 2rem; }
-    .collection-name { font-family: "Playfair Display", serif; font-size: 1.5rem; margin-bottom: 0.5rem; font-weight: 700; word-wrap: break-word; }
-    .collection-type { color: var(--gold); font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; margin-bottom: 1rem; font-weight: 600; }
-    .collection-price { color: var(--gold-light); font-size: 0.85rem; font-weight: 600; margin-bottom: 0.5rem; }
-    .collection-link { color: var(--text); font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; display: flex; align-items: center; gap: 0.8rem; opacity: 0; transform: translateY(20px); transition: all 0.5s var(--transition); font-weight: 500; }
-    .collection-card:hover .collection-link { opacity: 1; transform: translateY(0); }
-    
-    .services { background: var(--dark-2); }
-    .services-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; max-width: 1400px; margin: 0 auto; }
-    .service-card { padding: 2.5rem 2rem; background: var(--dark-3); border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.5s var(--transition); position: relative; overflow: hidden; }
-    .service-card::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-light)); transform: scaleX(0); transform-origin: left; transition: transform 0.6s var(--transition); }
-    .service-card:hover { transform: translateY(-10px); border-color: rgba(201, 169, 97, 0.3); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3); }
-    .service-card:hover::before { transform: scaleX(1); }
-    .service-icon { font-size: 2.5rem; color: var(--gold); margin-bottom: 1.5rem; }
-    .service-title { font-size: 1.3rem; margin-bottom: 1rem; font-weight: 700; word-wrap: break-word; }
-    .service-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; }
-    
-    .horizontal-gallery { overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding: 2rem 0; scrollbar-width: thin; scrollbar-color: var(--gold) var(--dark); }
-    .horizontal-gallery::-webkit-scrollbar { height: 8px; }
-    .horizontal-gallery::-webkit-scrollbar-track { background: var(--dark); }
-    .horizontal-gallery::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 4px; }
-    .horizontal-track { display: flex; gap: 1.5rem; padding: 0 1.5rem; width: max-content; }
-    .horizontal-item { scroll-snap-align: start; flex: 0 0 300px; aspect-ratio: 3/4; position: relative; overflow: hidden; cursor: pointer; transition: all 0.5s var(--transition); border-radius: 8px; }
-    .horizontal-item:hover { transform: scale(1.05); }
-    .horizontal-bg { position: absolute; inset: 0; background-size: cover; background-position: center; background-repeat: no-repeat; transition: transform 0.8s var(--transition); }
-    .horizontal-item:hover .horizontal-bg { transform: scale(1.2); }
-    .horizontal-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, transparent 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; }
-    .horizontal-overlay h4 { font-size: 1.2rem; margin-bottom: 0.3rem; color: var(--text); }
-    .horizontal-overlay p { font-size: 0.75rem; color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase; }
-    
-    .before-after { position: relative; width: 100%; max-width: 800px; margin: 3rem auto; aspect-ratio: 16/9; overflow: hidden; cursor: col-resize; border-radius: 8px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); }
-    .ba-image { position: absolute; inset: 0; background-size: cover; background-position: center; }
-    .ba-before { clip-path: inset(0 50% 0 0); }
-    .ba-after { z-index: 1; }
-    .ba-slider { position: absolute; top: 0; bottom: 0; left: 50%; width: 4px; background: var(--gold); z-index: 2; transform: translateX(-50%); }
-    .ba-handle { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 50px; height: 50px; background: var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--dark); font-size: 1.2rem; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); z-index: 3; }
-    .ba-label { position: absolute; top: 1rem; padding: 0.5rem 1rem; background: rgba(0, 0, 0, 0.7); color: var(--gold); font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600; border-radius: 4px; z-index: 3; }
-    .ba-label.before { left: 1rem; }
-    .ba-label.after { right: 1rem; }
-    
-    .testimonials { background: var(--dark-2); }
-    .testimonial-slider { max-width: 1000px; margin: 0 auto; position: relative; overflow: hidden; }
-    .testimonial-track { display: flex; transition: transform 0.8s var(--transition); }
-    .testimonial { min-width: 100%; padding: 3rem 1.5rem; text-align: center; }
-    .testimonial-quote { font-family: "Playfair Display", serif; font-size: clamp(1.2rem, 3vw, 1.8rem); font-style: italic; line-height: 1.5; margin-bottom: 2rem; color: var(--text); font-weight: 400; word-wrap: break-word; }
-    .testimonial-quote::before { content: '"'; color: var(--gold); font-size: 4rem; display: block; margin-bottom: 0.5rem; line-height: 1; }
-    .testimonial-author { color: var(--gold); letter-spacing: 0.25em; text-transform: uppercase; font-size: 0.85rem; font-weight: 600; }
-    .testimonial-role { color: var(--text-muted); font-size: 0.8rem; margin-top: 0.5rem; letter-spacing: 0.1em; }
-    .testimonial-nav { display: flex; justify-content: center; gap: 0.8rem; margin-top: 2rem; }
-    .testimonial-dot { width: 40px; height: 2px; background: rgba(255, 255, 255, 0.2); border: none; cursor: pointer; transition: all 0.4s var(--transition); }
-    .testimonial-dot.active { background: var(--gold); width: 60px; }
-    .testimonial-progress { width: 100%; max-width: 300px; height: 2px; background: rgba(255, 255, 255, 0.1); margin: 2rem auto 0; overflow: hidden; border-radius: 2px; }
-    .testimonial-progress-bar { height: 100%; background: var(--gold); width: 0%; transition: width 0.1s linear; }
-    
-    .contact-grid { display: grid; grid-template-columns: 1fr; gap: 3rem; max-width: 1400px; margin: 0 auto; }
-    .contact-info h3 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 1.5rem; font-weight: 900; word-wrap: break-word; }
-    .contact-info p { color: var(--text-light); margin-bottom: 2rem; font-size: 1rem; line-height: 1.7; }
-    .contact-details { list-style: none; }
-    .contact-details li { display: flex; align-items: flex-start; gap: 1rem; padding: 1.2rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.3s; }
-    .contact-details li:hover { padding-left: 0.5rem; }
-    .contact-details i { color: var(--gold); font-size: 1.2rem; width: 25px; margin-top: 0.2rem; }
-    .contact-details span { font-size: 0.95rem; line-height: 1.5; }
-    .open-badge { display: inline-block; padding: 0.3rem 0.8rem; background: #27ae60; color: white; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; border-radius: 20px; margin-left: 0.5rem; animation: pulse 2s infinite; }
-    .closed-badge { display: inline-block; padding: 0.3rem 0.8rem; background: #c0392b; color: white; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; border-radius: 20px; margin-left: 0.5rem; }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
-    .map-container { margin-top: 2rem; border: 1px solid rgba(201, 169, 97, 0.2); overflow: hidden; aspect-ratio: 16/9; border-radius: 8px; }
-    .map-container iframe { width: 100%; height: 100%; border: 0; filter: grayscale(0.7) contrast(1.1); }
-    [data-theme="light"] .map-container iframe { filter: none; }
-    .contact-form { display: flex; flex-direction: column; gap: 1.5rem; }
-    .form-group { position: relative; }
-    .form-group input, .form-group textarea { width: 100%; padding: 1rem 0; background: transparent; border: none; border-bottom: 1px solid rgba(255, 255, 255, 0.2); color: var(--text); font-size: 1rem; font-family: inherit; transition: border-color 0.4s; }
-    .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--gold); }
-    .form-group input.error, .form-group textarea.error { border-color: #c0392b; }
-    .form-group input.success, .form-group textarea.success { border-color: #27ae60; }
-    .form-group label { position: absolute; left: 0; top: 1rem; color: var(--text-muted); font-size: 0.9rem; pointer-events: none; transition: all 0.4s var(--transition); }
-    .form-group input:focus + label, .form-group input:not(:placeholder-shown) + label, .form-group textarea:focus + label, .form-group textarea:not(:placeholder-shown) + label { top: -0.8rem; font-size: 0.75rem; color: var(--gold); letter-spacing: 0.1em; font-weight: 600; }
-    .form-group textarea { resize: vertical; min-height: 100px; }
-    .form-error { color: #c0392b; font-size: 0.75rem; margin-top: 0.3rem; display: none; }
-    .form-error.show { display: block; }
-    
-    .trust-badges { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; margin: 3rem 0; padding: 2rem; background: var(--dark-3); border-radius: 8px; border: 1px solid rgba(201, 169, 97, 0.2); }
-    .trust-badge { display: flex; align-items: center; gap: 0.8rem; padding: 1rem 1.5rem; background: rgba(201, 169, 97, 0.1); border-radius: 8px; transition: all 0.3s; }
-    .trust-badge:hover { background: rgba(201, 169, 97, 0.2); transform: translateY(-3px); }
-    .trust-badge i { font-size: 1.5rem; color: var(--gold); }
-    .trust-badge span { font-size: 0.85rem; color: var(--text); font-weight: 500; }
-    
-    .footer { background: var(--dark-2); padding: 4rem 1.5rem 2rem; border-top: 1px solid rgba(201, 169, 97, 0.2); }
-    .footer-grid { display: grid; grid-template-columns: 1fr; gap: 2.5rem; max-width: 1400px; margin: 0 auto 3rem; }
-    .footer-brand h3 { font-size: 1.8rem; color: var(--gold); margin-bottom: 1rem; letter-spacing: 0.1em; font-weight: 900; }
-    .footer-brand p { color: var(--text-muted); margin-bottom: 1.5rem; line-height: 1.7; font-size: 0.95rem; }
-    .footer-social { display: flex; gap: 1rem; }
-    .footer-social a { width: 45px; height: 45px; border: 1px solid rgba(255, 255, 255, 0.2); display: flex; align-items: center; justify-content: center; color: var(--text); text-decoration: none; transition: all 0.4s var(--transition); font-size: 1.1rem; }
-    .footer-social a:hover { background: var(--gold); color: var(--dark); border-color: var(--gold); transform: translateY(-5px); }
-    .footer-col h4 { color: var(--gold); font-size: 0.85rem; letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 1.5rem; font-family: "Inter", sans-serif; font-weight: 600; }
-    .footer-col ul { list-style: none; }
-    .footer-col ul li { margin-bottom: 0.8rem; }
-    .footer-col ul a { color: var(--text-muted); text-decoration: none; font-size: 0.9rem; transition: all 0.3s; display: inline-block; }
-    .footer-col ul a:hover { color: var(--gold); transform: translateX(5px); }
-    .footer-bottom { max-width: 1400px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.05); display: flex; flex-direction: column; gap: 1rem; color: var(--text-muted); font-size: 0.85rem; text-align: center; }
-    
-    .admin-fab { position: fixed; bottom: 1.5rem; right: 1.5rem; width: 55px; height: 55px; background: var(--gold); color: var(--dark); border: none; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; box-shadow: 0 10px 30px rgba(201, 169, 97, 0.4); z-index: 999; transition: all 0.4s var(--transition); text-decoration: none; }
-    .admin-fab:hover { transform: scale(1.15) rotate(15deg); box-shadow: 0 15px 40px rgba(201, 169, 97, 0.6); }
-    .whatsapp-fab { position: fixed; bottom: 1.5rem; left: 1.5rem; width: 55px; height: 55px; background: #25D366; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4); z-index: 999; text-decoration: none; transition: all 0.4s var(--transition); animation: whatsappPulse 2s infinite; }
-    @keyframes whatsappPulse { 0%, 100% { box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4); } 50% { box-shadow: 0 10px 30px rgba(37, 211, 102, 0.8), 0 0 0 10px rgba(37, 211, 102, 0.1); } }
-    .whatsapp-fab:hover { transform: scale(1.15); }
-    .call-fab { position: fixed; bottom: 6rem; left: 1.5rem; width: 55px; height: 55px; background: #3498db; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; box-shadow: 0 10px 30px rgba(52, 152, 219, 0.4); z-index: 999; text-decoration: none; transition: all 0.4s var(--transition); }
-    .call-fab:hover { transform: scale(1.15); }
-    .back-to-top { position: fixed; bottom: 6rem; right: 1.5rem; width: 50px; height: 50px; background: var(--dark-3); color: var(--gold); border: 1px solid var(--gold); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; cursor: pointer; opacity: 0; visibility: hidden; transition: all 0.4s var(--transition); z-index: 998; }
-    .back-to-top.visible { opacity: 1; visibility: visible; }
-    .back-to-top:hover { background: var(--gold); color: var(--dark); transform: translateY(-5px); }
-    
-    .toast { position: fixed; bottom: 6rem; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--gold); color: var(--dark); padding: 1rem 2rem; font-weight: 600; z-index: 10003; transition: transform 0.4s; letter-spacing: 0.1em; border-radius: 4px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); }
-    .toast.show { transform: translateX(-50%) translateY(0); }
-    .toast.error { background: #c0392b; color: white; }
-    .toast.success { background: #27ae60; color: white; }
-    
-    .reveal { opacity: 0; transform: translateY(50px); transition: all 1s var(--transition); }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    
-    @media (min-width: 769px) {
-      .nav { padding: 2rem 4rem; }
-      .nav.scrolled { padding: 1.2rem 4rem; }
-      .nav-links { display: flex; }
-      .nav-cta { display: inline-block; }
-      .mobile-toggle { display: none; }
-      .mobile-menu { display: none !important; }
-      .section { padding: 8rem 4rem; }
-      .about-grid { grid-template-columns: 1fr 1fr; gap: 5rem; }
-      .collections-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
-      .services-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-      .contact-grid { grid-template-columns: 1fr 1fr; gap: 5rem; }
-      .footer-grid { grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; }
-      .footer-bottom { flex-direction: row; justify-content: space-between; text-align: left; }
-      .hero { padding: 8rem 2rem 4rem; }
-      .hero-title { font-size: clamp(3rem, 8vw, 6rem); }
-      .hero-desc { font-size: 1.1rem; }
-      .cursor { display: block; }
-      .horizontal-item { flex: 0 0 350px; }
-    }
-    @media (max-width: 768px) {
-      .nav-links .nav-cta-desktop { display: none; }
-      .mobile-toggle { display: block; }
-      .cursor { display: none; }
-      .before-after { aspect-ratio: 4/3; }
-      body.urdu h1, body.urdu h2, body.urdu h3 { font-size: 1.5rem !important; }
-    }
-    
-    div[style*="position: fixed"][style*="bottom"][style*="right"], .netlify-identity-banner { display: none !important; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hussain Marble Factory - Premium Marble, Granite & Gypsum Supplier | Nankana Sahib</title>
+<meta name="description" content="Pakistan's trusted marble, granite, ceramic tiles & A-grade gypsum supplier since 2010. Floor-to-ceiling perfection with factory-direct pricing.">
+<meta name="keywords" content="marble supplier Pakistan, granite Nankana Sahib, gypsum powder, ceramic tiles, Hussain Marble Factory, Mor Khunda">
+<meta property="og:title" content="Hussain Marble Factory">
+<meta property="og:description" content="Premium marble, granite & gypsum supplier. Established 2010.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🪨</text></svg>">
+
+<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+<script>if(window.netlifyIdentity){window.netlifyIdentity.on("init",function(u){if(!u){window.netlifyIdentity.on("login",function(){document.location.href="/admin/";});}});}</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Inter:wght@300;400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+:root{
+  --primary:#1a1a1a;
+  --secondary:#c9a961;
+  --secondary-light:#e4c97e;
+  --accent:#8b7355;
+  --bg:#ffffff;
+  --bg-alt:#f8f6f3;
+  --text:#2c2c2c;
+  --text-light:#6b6b6b;
+  --border:#e5e5e5;
+  --shadow:0 4px 20px rgba(0,0,0,0.08);
+  --shadow-lg:0 10px 40px rgba(0,0,0,0.12);
+}
+[data-theme="dark"]{
+  --primary:#0a0a0a;
+  --bg:#0a0a0a;
+  --bg-alt:#141414;
+  --text:#e8e8e8;
+  --text-light:#a0a0a0;
+  --border:#2a2a2a;
+  --shadow:0 4px 20px rgba(0,0,0,0.3);
+  --shadow-lg:0 10px 40px rgba(0,0,0,0.5);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden;transition:background 0.3s,color 0.3s;}
+body.urdu{font-family:'Noto Nastaliq Urdu',serif;direction:rtl;}
+body.urdu h1,body.urdu h2,body.urdu h3,body.urdu h4{font-family:'Noto Nastaliq Urdu',serif;}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;font-weight:700;line-height:1.2;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+.container{max-width:1280px;margin:0 auto;padding:0 1.5rem;}
+
+/* TOP BAR */
+.top-bar{background:var(--primary);color:#fff;padding:0.6rem 0;font-size:0.8rem;border-bottom:1px solid rgba(201,169,97,0.3);}
+.top-bar .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:0.5rem;}
+.top-bar-left{display:flex;gap:1.5rem;align-items:center;}
+.top-bar-left span{display:flex;align-items:center;gap:0.5rem;}
+.top-bar-left i{color:var(--secondary);}
+.top-bar-right{display:flex;gap:1rem;align-items:center;}
+.top-bar-right a{color:#fff;transition:color 0.3s;}
+.top-bar-right a:hover{color:var(--secondary);}
+
+/* HEADER */
+.header{background:var(--bg);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:1000;transition:all 0.3s;}
+.header.scrolled{box-shadow:var(--shadow);}
+.header .container{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;}
+.logo{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:900;color:var(--text);display:flex;align-items:center;gap:0.5rem;}
+.logo .gold{color:var(--secondary);}
+.logo-sub{font-size:0.7rem;color:var(--text-light);letter-spacing:0.2em;text-transform:uppercase;margin-top:-0.3rem;}
+
+.nav{display:flex;gap:2rem;align-items:center;}
+.nav a{font-size:0.9rem;font-weight:500;color:var(--text);position:relative;transition:color 0.3s;}
+.nav a:hover,.nav a.active{color:var(--secondary);}
+.nav a::after{content:'';position:absolute;bottom:-5px;left:0;width:0;height:2px;background:var(--secondary);transition:width 0.3s;}
+.nav a:hover::after,.nav a.active::after{width:100%;}
+
+.header-actions{display:flex;gap:0.8rem;align-items:center;}
+.icon-btn{width:40px;height:40px;border-radius:50%;border:1px solid var(--border);background:transparent;color:var(--text);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.3s;font-size:1rem;}
+.icon-btn:hover{background:var(--secondary);color:#fff;border-color:var(--secondary);}
+.lang-btn{padding:0.5rem 1rem;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text);cursor:pointer;font-size:0.75rem;font-weight:600;letter-spacing:0.1em;transition:all 0.3s;}
+.lang-btn:hover{background:var(--secondary);color:#fff;border-color:var(--secondary);}
+.quote-btn{padding:0.7rem 1.5rem;background:var(--secondary);color:#fff;border:none;border-radius:4px;font-size:0.8rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.3s;}
+.quote-btn:hover{background:var(--secondary-light);transform:translateY(-2px);box-shadow:var(--shadow);}
+.menu-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer;}
+
+/* MOBILE MENU */
+.mobile-menu{display:none;position:fixed;inset:0;background:var(--bg);z-index:999;flex-direction:column;padding:2rem;overflow-y:auto;}
+.mobile-menu.active{display:flex;}
+.mobile-menu-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;}
+.mobile-menu a{font-size:1.3rem;padding:1rem 0;border-bottom:1px solid var(--border);color:var(--text);font-family:'Playfair Display',serif;}
+.mobile-menu a:hover{color:var(--secondary);}
+
+/* HERO */
+.hero{position:relative;min-height:85vh;display:flex;align-items:center;overflow:hidden;background:var(--primary);}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;}
+.hero-bg::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,0,0,0.7),rgba(0,0,0,0.4));}
+.hero-content{position:relative;z-index:2;color:#fff;max-width:800px;}
+.hero-tag{display:inline-block;color:var(--secondary);font-size:0.85rem;letter-spacing:0.3em;text-transform:uppercase;margin-bottom:1.5rem;font-weight:600;}
+.hero h1{font-size:clamp(2.5rem,6vw,5rem);line-height:1.1;margin-bottom:1.5rem;font-weight:900;}
+.hero h1 .highlight{color:var(--secondary);}
+.hero p{font-size:1.1rem;color:rgba(255,255,255,0.9);margin-bottom:2rem;max-width:600px;line-height:1.7;}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn{padding:1rem 2rem;font-size:0.85rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;border:none;cursor:pointer;transition:all 0.3s;display:inline-flex;align-items:center;gap:0.5rem;}
+.btn-primary{background:var(--secondary);color:#fff;}
+.btn-primary:hover{background:var(--secondary-light);transform:translateY(-3px);box-shadow:0 10px 30px rgba(201,169,97,0.4);}
+.btn-outline{background:transparent;color:#fff;border:2px solid #fff;}
+.btn-outline:hover{background:#fff;color:var(--primary);}
+.btn-dark{background:var(--primary);color:#fff;}
+.btn-dark:hover{background:var(--secondary);transform:translateY(-3px);}
+
+.hero-stats{position:absolute;bottom:0;left:0;right:0;background:rgba(255,255,255,0.95);backdrop-filter:blur(10px);z-index:3;}
+[data-theme="dark"] .hero-stats{background:rgba(20,20,20,0.95);}
+.hero-stats .container{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;padding:2rem 1.5rem;}
+.hero-stat{text-align:center;border-right:1px solid var(--border);}
+.hero-stat:last-child{border-right:none;}
+.hero-stat-num{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:900;color:var(--secondary);display:block;}
+.hero-stat-label{font-size:0.8rem;color:var(--text-light);letter-spacing:0.1em;text-transform:uppercase;margin-top:0.3rem;}
+
+/* SECTION */
+.section{padding:5rem 0;}
+.section-header{text-align:center;margin-bottom:4rem;}
+.section-tag{display:inline-block;color:var(--secondary);font-size:0.8rem;letter-spacing:0.3em;text-transform:uppercase;margin-bottom:1rem;font-weight:600;}
+.section-title{font-size:clamp(2rem,4vw,3rem);margin-bottom:1rem;color:var(--text);}
+.section-title .highlight{color:var(--secondary);}
+.section-desc{color:var(--text-light);max-width:700px;margin:0 auto;font-size:1.05rem;}
+.section-divider{width:60px;height:3px;background:var(--secondary);margin:1rem auto;}
+
+/* CATEGORIES */
+.categories{background:var(--bg-alt);}
+.categories-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;}
+.category-card{position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:8px;cursor:pointer;box-shadow:var(--shadow);transition:all 0.4s;}
+.category-card:hover{transform:translateY(-10px);box-shadow:var(--shadow-lg);}
+.category-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 0.6s;}
+.category-card:hover .category-bg{transform:scale(1.1);}
+.category-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.9) 0%,rgba(0,0,0,0.3) 50%,transparent);display:flex;flex-direction:column;justify-content:flex-end;padding:2rem;color:#fff;}
+.category-name{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:700;margin-bottom:0.5rem;}
+.category-type{font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--secondary);margin-bottom:1rem;}
+.category-price{font-size:0.9rem;color:var(--secondary-light);font-weight:600;margin-bottom:1rem;}
+.category-link{font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;display:inline-flex;align-items:center;gap:0.5rem;transition:gap 0.3s;}
+.category-card:hover .category-link{gap:1rem;}
+
+/* PRODUCTS GRID */
+.products-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;}
+.product-card{background:var(--bg);border:1px solid var(--border);border-radius:8px;overflow:hidden;transition:all 0.4s;}
+.product-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--secondary);}
+.product-img{aspect-ratio:4/3;background-size:cover;background-position:center;position:relative;overflow:hidden;}
+.product-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.3),transparent);}
+.product-badge{position:absolute;top:1rem;left:1rem;background:var(--secondary);color:#fff;padding:0.3rem 0.8rem;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;border-radius:4px;}
+.product-info{padding:1.5rem;}
+.product-category{font-size:0.75rem;color:var(--secondary);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.5rem;font-weight:600;}
+.product-name{font-family:'Playfair Display',serif;font-size:1.3rem;margin-bottom:0.5rem;color:var(--text);}
+.product-desc{font-size:0.9rem;color:var(--text-light);margin-bottom:1rem;line-height:1.6;}
+.product-footer{display:flex;justify-content:space-between;align-items:center;padding-top:1rem;border-top:1px solid var(--border);}
+.product-price{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--secondary);font-weight:700;}
+.product-btn{padding:0.5rem 1rem;background:var(--primary);color:#fff;border:none;border-radius:4px;font-size:0.75rem;font-weight:600;cursor:pointer;transition:all 0.3s;}
+[data-theme="dark"] .product-btn{background:var(--secondary);color:var(--primary);}
+.product-btn:hover{background:var(--secondary);color:#fff;}
+
+/* ABOUT */
+.about{background:var(--bg-alt);}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.about-image{position:relative;aspect-ratio:4/5;border-radius:8px;overflow:hidden;box-shadow:var(--shadow-lg);}
+.about-image-bg{position:absolute;inset:0;background-size:cover;background-position:center;}
+.about-image::after{content:'EST. 2010';position:absolute;bottom:2rem;left:2rem;font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--secondary);letter-spacing:0.2em;font-weight:700;background:rgba(0,0,0,0.7);padding:0.5rem 1rem;border-radius:4px;}
+.about-content .section-tag{text-align:left;}
+.about-content h2{font-size:clamp(2rem,4vw,2.8rem);margin-bottom:1.5rem;text-align:left;}
+.about-content p{color:var(--text-light);margin-bottom:1.2rem;font-size:1rem;line-height:1.8;}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem;}
+.about-feature{display:flex;gap:1rem;align-items:flex-start;}
+.about-feature i{color:var(--secondary);font-size:1.5rem;margin-top:0.2rem;}
+.about-feature h4{font-size:1rem;margin-bottom:0.3rem;color:var(--text);}
+.about-feature p{font-size:0.85rem;color:var(--text-light);margin:0;}
+
+/* SERVICES */
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;}
+.service-card{padding:2.5rem 2rem;background:var(--bg);border:1px solid var(--border);border-radius:8px;transition:all 0.4s;position:relative;overflow:hidden;}
+.service-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:var(--secondary);transform:scaleX(0);transform-origin:left;transition:transform 0.4s;}
+.service-card:hover{transform:translateY(-10px);box-shadow:var(--shadow-lg);border-color:var(--secondary);}
+.service-card:hover::before{transform:scaleX(1);}
+.service-icon{width:70px;height:70px;background:var(--bg-alt);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;color:var(--secondary);margin-bottom:1.5rem;transition:all 0.3s;}
+.service-card:hover .service-icon{background:var(--secondary);color:#fff;transform:rotateY(360deg);}
+.service-title{font-size:1.3rem;margin-bottom:1rem;color:var(--text);}
+.service-desc{color:var(--text-light);font-size:0.95rem;line-height:1.7;}
+
+/* GALLERY */
+.gallery{background:var(--bg-alt);}
+.gallery-scroll{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:1rem 0;}
+.gallery-scroll::-webkit-scrollbar{height:8px;}
+.gallery-scroll::-webkit-scrollbar-thumb{background:var(--secondary);border-radius:4px;}
+.gallery-track{display:flex;gap:1.5rem;padding:0 1.5rem;width:max-content;}
+.gallery-item{scroll-snap-align:start;flex:0 0 320px;aspect-ratio:3/4;position:relative;overflow:hidden;border-radius:8px;cursor:pointer;box-shadow:var(--shadow);}
+.gallery-item:hover{transform:scale(1.03);}
+.gallery-bg{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 0.6s;}
+.gallery-item:hover .gallery-bg{transform:scale(1.15);}
+.gallery-overlay{position:absolute;bottom:0;left:0;right:0;padding:1.5rem;background:linear-gradient(to top,rgba(0,0,0,0.9),transparent);color:#fff;}
+.gallery-overlay h4{font-size:1.1rem;margin-bottom:0.3rem;}
+.gallery-overlay p{font-size:0.75rem;color:var(--secondary);letter-spacing:0.15em;text-transform:uppercase;}
+
+/* BEFORE/AFTER */
+.before-after-section{background:var(--bg);}
+.before-after{position:relative;width:100%;max-width:900px;margin:3rem auto;aspect-ratio:16/9;overflow:hidden;cursor:col-resize;border-radius:8px;box-shadow:var(--shadow-lg);}
+.ba-img{position:absolute;inset:0;background-size:cover;background-position:center;}
+.ba-before{clip-path:inset(0 50% 0 0);}
+.ba-slider{position:absolute;top:0;bottom:0;left:50%;width:4px;background:var(--secondary);transform:translateX(-50%);pointer-events:none;}
+.ba-handle{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60px;height:60px;background:var(--secondary);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;box-shadow:0 5px 20px rgba(0,0,0,0.3);pointer-events:none;}
+.ba-label{position:absolute;top:1.5rem;padding:0.5rem 1.2rem;background:rgba(0,0,0,0.8);color:var(--secondary);font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:600;border-radius:4px;z-index:3;}
+.ba-label.before{left:1.5rem;}
+.ba-label.after{right:1.5rem;}
+
+/* TESTIMONIALS */
+.testimonials{background:var(--bg-alt);}
+.testimonial-slider{max-width:900px;margin:0 auto;position:relative;overflow:hidden;}
+.testimonial-track{display:flex;transition:transform 0.6s;}
+.testimonial{min-width:100%;padding:3rem 2rem;text-align:center;background:var(--bg);border-radius:8px;box-shadow:var(--shadow);margin:0 1rem;}
+.testimonial-quote{font-family:'Playfair Display',serif;font-size:1.3rem;font-style:italic;line-height:1.6;margin-bottom:2rem;color:var(--text);position:relative;}
+.testimonial-quote::before{content:'"';color:var(--secondary);font-size:5rem;position:absolute;top:-2rem;left:50%;transform:translateX(-50%);line-height:1;opacity:0.3;}
+.testimonial-author{color:var(--secondary);letter-spacing:0.2em;text-transform:uppercase;font-size:0.85rem;font-weight:600;}
+.testimonial-role{color:var(--text-light);font-size:0.8rem;margin-top:0.5rem;}
+.testimonial-dots{display:flex;justify-content:center;gap:0.5rem;margin-top:2rem;}
+.testimonial-dot{width:40px;height:3px;background:var(--border);border:none;cursor:pointer;transition:all 0.3s;border-radius:2px;}
+.testimonial-dot.active{background:var(--secondary);width:60px;}
+
+/* TRUST */
+.trust-section{background:var(--primary);color:#fff;padding:4rem 0;}
+.trust-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:2rem;}
+.trust-item{text-align:center;padding:2rem 1rem;}
+.trust-item i{font-size:2.5rem;color:var(--secondary);margin-bottom:1rem;}
+.trust-item h4{font-size:1.1rem;margin-bottom:0.5rem;}
+.trust-item p{font-size:0.85rem;color:rgba(255,255,255,0.7);}
+
+/* CONTACT */
+.contact{background:var(--bg-alt);}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;}
+.contact-info h3{font-size:2rem;margin-bottom:1rem;}
+.contact-info>p{color:var(--text-light);margin-bottom:2rem;}
+.contact-list{list-style:none;margin-bottom:2rem;}
+.contact-list li{display:flex;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--border);align-items:flex-start;}
+.contact-list i{color:var(--secondary);font-size:1.2rem;width:25px;margin-top:0.3rem;}
+.contact-list a{color:var(--secondary);font-weight:500;}
+.contact-list a:hover{text-decoration:underline;}
+.open-badge{display:inline-block;padding:0.3rem 0.8rem;background:#27ae60;color:#fff;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;border-radius:20px;margin-left:0.5rem;}
+.closed-badge{display:inline-block;padding:0.3rem 0.8rem;background:#c0392b;color:#fff;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;border-radius:20px;margin-left:0.5rem;}
+.map-container{border-radius:8px;overflow:hidden;aspect-ratio:16/9;box-shadow:var(--shadow);}
+.map-container iframe{width:100%;height:100%;border:0;}
+.contact-form{background:var(--bg);padding:2.5rem;border-radius:8px;box-shadow:var(--shadow);}
+.contact-form h3{font-size:1.5rem;margin-bottom:1.5rem;}
+.form-group{margin-bottom:1.5rem;}
+.form-group label{display:block;font-size:0.85rem;font-weight:600;margin-bottom:0.5rem;color:var(--text);}
+.form-group input,.form-group textarea{width:100%;padding:0.9rem 1rem;background:var(--bg-alt);border:1px solid var(--border);border-radius:4px;color:var(--text);font-size:0.95rem;font-family:inherit;transition:border-color 0.3s;}
+.form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--secondary);}
+.form-group textarea{resize:vertical;min-height:120px;}
+
+/* FOOTER */
+.footer{background:var(--primary);color:#fff;padding:4rem 0 2rem;}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem;}
+.footer-brand .logo{color:#fff;margin-bottom:1rem;}
+.footer-brand p{color:rgba(255,255,255,0.7);margin-bottom:1.5rem;line-height:1.7;}
+.footer-social{display:flex;gap:0.8rem;}
+.footer-social a{width:40px;height:40px;border:1px solid rgba(255,255,255,0.2);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;transition:all 0.3s;}
+.footer-social a:hover{background:var(--secondary);border-color:var(--secondary);transform:translateY(-3px);}
+.footer-col h4{font-size:1rem;margin-bottom:1.5rem;color:var(--secondary);letter-spacing:0.1em;text-transform:uppercase;}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:0.8rem;}
+.footer-col ul a{color:rgba(255,255,255,0.7);font-size:0.9rem;transition:all 0.3s;}
+.footer-col ul a:hover{color:var(--secondary);padding-left:5px;}
+.footer-bottom{padding-top:2rem;border-top:1px solid rgba(255,255,255,0.1);display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;color:rgba(255,255,255,0.6);font-size:0.85rem;}
+
+/* FLOATING */
+.fab{position:fixed;width:55px;height:55px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;text-decoration:none;z-index:999;transition:all 0.3s;box-shadow:0 5px 20px rgba(0,0,0,0.3);}
+.fab:hover{transform:scale(1.15);}
+.fab-whatsapp{bottom:1.5rem;left:1.5rem;background:#25D366;color:#fff;animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{box-shadow:0 5px 20px rgba(37,211,102,0.4);}50%{box-shadow:0 5px 20px rgba(37,211,102,0.8),0 0 0 10px rgba(37,211,102,0.1);}}
+.fab-call{bottom:6rem;left:1.5rem;background:#3498db;color:#fff;font-size:1.3rem;}
+.fab-admin{bottom:1.5rem;right:1.5rem;background:var(--secondary);color:#fff;}
+.fab-top{bottom:6rem;right:1.5rem;background:var(--secondary);color:#fff;opacity:0;visibility:hidden;}
+.fab-top.visible{opacity:1;visibility:visible;}
+
+/* RESPONSIVE */
+@media(max-width:968px){
+  .nav,.quote-btn{display:none;}
+  .menu-toggle{display:block;}
+  .about-grid,.contact-grid{grid-template-columns:1fr;gap:3rem;}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2rem;}
+  .hero-stats .container{grid-template-columns:repeat(2,1fr);}
+  .hero-stat{border-right:none;}
+  .top-bar-left{flex-direction:column;align-items:flex-start;gap:0.3rem;}
+  body.urdu h1,body.urdu h2,body.urdu h3{font-size:1.5rem !important;}
+}
+@media(max-width:600px){
+  .footer-grid{grid-template-columns:1fr;}
+  .about-features{grid-template-columns:1fr;}
+  .hero-stats .container{grid-template-columns:1fr 1fr;}
+}
+</style>
 </head>
 <body>
-  <div class="progress-bar" id="progressBar"></div>
-  <div class="cursor" id="cursor"></div>
-  <div class="loader" id="loader">
-    <div class="loader-logo">HUSSAIN</div>
-    <div class="loader-subtitle">MARBLE & STONE</div>
-    <div class="loader-bar"></div>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <div class="container">
+    <div class="top-bar-left">
+      <span><i class="fas fa-phone"></i><a href="tel:+923044847750" style="color:#fff;">0304 4847750</a></span>
+      <span><i class="fas fa-envelope"></i>info@hussainmarble.store</span>
+      <span><i class="fas fa-map-marker-alt"></i>Mor Khunda, Nankana Sahib</span>
+    </div>
+    <div class="top-bar-right">
+      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://wa.me/923044847750" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    </div>
   </div>
+</div>
 
-  <nav class="nav" id="nav">
-    <a href="#" class="nav-logo">HUSSAIN <span>MARBLE</span></a>
-    <ul class="nav-links">
-      <li><a href="#home" class="nav-link">Home</a></li>
-      <li><a href="#about" class="nav-link">About</a></li>
-      <li><a href="#collections" class="nav-link">Collections</a></li>
-      <li><a href="#gallery" class="nav-link">Gallery</a></li>
-      <li><a href="#services" class="nav-link">Services</a></li>
-      <li><a href="#contact" class="nav-link">Contact</a></li>
-      <li><button class="lang-toggle" onclick="toggleLang()" id="langBtn">UR</button></li>
-      <li><button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><i class="fas fa-moon" id="themeIcon"></i></button></li>
-    </ul>
-    <a href="#contact" class="nav-cta nav-cta-desktop">Get Quote</a>
-    <button class="mobile-toggle" onclick="toggleMobileMenu()" aria-label="Menu"><i class="fas fa-bars"></i></button>
-  </nav>
-
-  <div class="mobile-menu" id="mobileMenu">
-    <button class="mobile-close" onclick="toggleMobileMenu()" aria-label="Close"><i class="fas fa-times"></i></button>
-    <a href="#home" onclick="toggleMobileMenu()">Home</a>
-    <a href="#about" onclick="toggleMobileMenu()">About</a>
-    <a href="#collections" onclick="toggleMobileMenu()">Collections</a>
-    <a href="#gallery" onclick="toggleMobileMenu()">Gallery</a>
-    <a href="#services" onclick="toggleMobileMenu()">Services</a>
-    <a href="#contact" onclick="toggleMobileMenu()">Contact</a>
-    <button class="lang-toggle" onclick="toggleLang(); toggleMobileMenu();" id="langBtnMobile">اردو / English</button>
-    <button class="theme-toggle" onclick="toggleTheme(); toggleMobileMenu();" style="margin-top:1rem;"><i class="fas fa-moon" id="themeIconMobile"></i></button>
+<!-- HEADER -->
+<header class="header" id="header">
+  <div class="container">
+    <a href="#" class="logo">
+      <div>
+        <div>HUSSAIN <span class="gold">MARBLE</span></div>
+        <div class="logo-sub">Factory Since 2010</div>
+      </div>
+    </a>
+    <nav class="nav">
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#collections" class="nav-link">Collections</a>
+      <a href="#gallery" class="nav-link">Gallery</a>
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <button class="lang-btn" onclick="toggleLang()" id="langBtn">UR</button>
+      <button class="icon-btn" onclick="toggleTheme()" id="themeBtn" aria-label="Theme"><i class="fas fa-moon"></i></button>
+      <a href="#contact" class="quote-btn">Get Quote</a>
+      <button class="menu-toggle" onclick="document.getElementById('mobileMenu').classList.add('active')" aria-label="Menu"><i class="fas fa-bars"></i></button>
+    </div>
   </div>
+</header>
 
-  <section class="hero" id="home">
-    <div class="hero-bg" id="heroBg"></div>
-    <canvas id="particles-canvas"></canvas>
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-header">
+    <div class="logo">HUSSAIN <span class="gold">MARBLE</span></div>
+    <button onclick="document.getElementById('mobileMenu').classList.remove('active')" style="background:none;border:none;color:var(--text);font-size:1.5rem;cursor:pointer;"><i class="fas fa-times"></i></button>
+  </div>
+  <a href="#home" onclick="document.getElementById('mobileMenu').classList.remove('active')">Home</a>
+  <a href="#about" onclick="document.getElementById('mobileMenu').classList.remove('active')">About</a>
+  <a href="#collections" onclick="document.getElementById('mobileMenu').classList.remove('active')">Collections</a>
+  <a href="#gallery" onclick="document.getElementById('mobileMenu').classList.remove('active')">Gallery</a>
+  <a href="#services" onclick="document.getElementById('mobileMenu').classList.remove('active')">Services</a>
+  <a href="#contact" onclick="document.getElementById('mobileMenu').classList.remove('active')">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg" id="heroBg" style="background:linear-gradient(135deg,#1a1a1a,#2a2a2a,#1a1a1a);"></div>
+  <div class="container">
     <div class="hero-content">
-      <div class="hero-subtitle" id="heroSubtitle">Premium Marble, Granite & Gypsum Supplier in Nankana Sahib District</div>
-      <h1 class="hero-title" id="heroTitle">Floor-to-Ceiling Perfection with Hussain Marble Factory</h1>
-      <p class="hero-desc" id="heroDesc">Established in 2010, Hussain Marble Factory is your trusted source for premium marble, granite, ceramic tiles, and A-grade gypsum powder.</p>
+      <div class="hero-tag" id="heroTag">Premium Marble, Granite & Gypsum Supplier</div>
+      <h1 id="heroTitle">Floor-to-Ceiling Perfection with <span class="highlight">Hussain Marble Factory</span></h1>
+      <p id="heroDesc">Established in 2010, your trusted source for premium marble, granite, ceramic tiles, and A-grade gypsum powder with factory-direct pricing.</p>
       <div class="hero-btns">
-        <a href="#collections" class="btn-primary">Explore Collections</a>
-        <a href="https://wa.me/923044847750?text=Hello%20Hussain%20Marble%20Factory!%20I%20want%20a%20quote." target="_blank" class="btn-secondary">WhatsApp Quote</a>
+        <a href="#collections" class="btn btn-primary">Explore Collections <i class="fas fa-arrow-right"></i></a>
+        <a href="https://wa.me/923044847750?text=Hello!%20I%20want%20a%20quote." target="_blank" class="btn btn-outline"><i class="fab fa-whatsapp"></i> WhatsApp Quote</a>
       </div>
     </div>
-    <div class="hero-scroll">Scroll to Discover</div>
-  </section>
-
-  <div class="marquee">
-    <div class="marquee-track">
-      <span>Premium Marble</span><i class="fas fa-diamond"></i><span>High-Grade Granite</span><i class="fas fa-diamond"></i><span>Ceramic Tiles</span><i class="fas fa-diamond"></i><span>A-Grade Gypsum</span><i class="fas fa-diamond"></i><span>Custom Medallions</span><i class="fas fa-diamond"></i><span>Expert Installation</span><i class="fas fa-diamond"></i>
-      <span>Premium Marble</span><i class="fas fa-diamond"></i><span>High-Grade Granite</span><i class="fas fa-diamond"></i><span>Ceramic Tiles</span><i class="fas fa-diamond"></i><span>A-Grade Gypsum</span><i class="fas fa-diamond"></i><span>Custom Medallions</span><i class="fas fa-diamond"></i><span>Expert Installation</span><i class="fas fa-diamond"></i>
+  </div>
+  <div class="hero-stats">
+    <div class="container">
+      <div class="hero-stat"><span class="hero-stat-num" data-target="15">0</span><span class="hero-stat-label">Years Experience</span></div>
+      <div class="hero-stat"><span class="hero-stat-num" data-target="500">0</span><span class="hero-stat-label">Projects Done</span></div>
+      <div class="hero-stat"><span class="hero-stat-num" data-target="50">0</span><span class="hero-stat-label">Stone Varieties</span></div>
+      <div class="hero-stat"><span class="hero-stat-num" data-target="100">0</span><span class="hero-stat-label">Happy Clients</span></div>
     </div>
   </div>
+</section>
 
-  <section class="section about" id="about">
+<!-- CATEGORIES -->
+<section class="section categories" id="collections">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Our Collections</span>
+      <h2 class="section-title">Premium Stone <span class="highlight">Collections</span></h2>
+      <div class="section-divider"></div>
+      <p class="section-desc">Each slab tells a geological story millions of years in the making. Explore our carefully curated selection.</p>
+    </div>
+    <div class="categories-grid" id="categoriesGrid"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about" id="about">
+  <div class="container">
     <div class="about-grid">
-      <div class="about-image reveal" id="aboutImage"></div>
-      <div class="about-content reveal">
-        <span class="section-label">Our Legacy</span>
+      <div class="about-image">
+        <div class="about-image-bg" id="aboutImage" style="background:linear-gradient(135deg,#1a1a1a,#2a2a2a,#1a1a1a);"></div>
+      </div>
+      <div class="about-content">
+        <span class="section-tag">About Us</span>
         <h2 id="aboutTitle">About Hussain Marble Factory</h2>
         <p id="aboutText1">Founded in 2010 in the heart of Mor Khunda, Hussain Marble Factory has grown into the leading natural stone and construction material supplier in the Nankana Sahib District.</p>
         <p id="aboutText2">From precision marble cutting and crafting our signature 4x4 stone pools to producing fresh A-grade gypsum ceiling tiles onsite, our dedicated team handles every project with expertise.</p>
-        <div class="about-stats">
-          <div><span class="stat-num" data-target="15">0</span><span class="stat-label">Years Experience</span></div>
-          <div><span class="stat-num" data-target="500">0</span><span class="stat-label">Projects Done</span></div>
-          <div><span class="stat-num" data-target="50">0</span><span class="stat-label">Stone Varieties</span></div>
+        <div class="about-features">
+          <div class="about-feature"><i class="fas fa-check-circle"></i><div><h4>Factory Direct</h4><p>No middlemen, best prices</p></div></div>
+          <div class="about-feature"><i class="fas fa-check-circle"></i><div><h4>Expert Team</h4><p>15+ years experience</p></div></div>
+          <div class="about-feature"><i class="fas fa-check-circle"></i><div><h4>Fast Delivery</h4><p>Across Nankana Sahib</p></div></div>
+          <div class="about-feature"><i class="fas fa-check-circle"></i><div><h4>Quality Assured</h4><p>Premium grade materials</p></div></div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section" id="collections">
-    <div class="section-header reveal">
+<!-- PRODUCTS -->
+<section class="section" id="products">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Featured Products</span>
+      <h2 class="section-title">Our Best <span class="highlight">Sellers</span></h2>
       <div class="section-divider"></div>
-      <span class="section-label">Our Collections</span>
-      <h2 class="section-title">Curated Stone Collections</h2>
-      <p class="section-desc">Each slab tells a geological story millions of years in the making.</p>
+      <p class="section-desc">Handpicked selections from our premium inventory.</p>
     </div>
-    <div class="collections-grid" id="collectionsGrid"></div>
-  </section>
+    <div class="products-grid" id="productsGrid"></div>
+  </div>
+</section>
 
-  <section class="section" id="gallery">
-    <div class="section-header reveal">
+<!-- GALLERY -->
+<section class="section gallery" id="gallery">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Our Work</span>
+      <h2 class="section-title">Project <span class="highlight">Gallery</span></h2>
       <div class="section-divider"></div>
-      <span class="section-label">Our Work</span>
-      <h2 class="section-title">Project Gallery</h2>
-      <p class="section-desc">Swipe to explore our finest work — touch-friendly horizontal gallery.</p>
+      <p class="section-desc">Swipe to explore our finest work and transformations.</p>
     </div>
-    <div class="horizontal-gallery" id="horizontalGallery"></div>
-  </section>
+    <div class="gallery-scroll" id="galleryScroll"></div>
+  </div>
+</section>
 
-  <section class="section" id="beforeafter" style="background: var(--dark-2);">
-    <div class="section-header reveal">
+<!-- BEFORE/AFTER -->
+<section class="section before-after-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Transformations</span>
+      <h2 class="section-title">Before & <span class="highlight">After</span></h2>
       <div class="section-divider"></div>
-      <span class="section-label">Transformations</span>
-      <h2 class="section-title">Before & After</h2>
       <p class="section-desc">Drag the slider to see the magic of our polishing and finishing work.</p>
     </div>
-    <div class="before-after reveal" id="beforeAfter">
-      <div class="ba-image ba-before" id="baBefore" style="background: linear-gradient(135deg, #8b7355, #a0826d, #6b5344);"></div>
-      <div class="ba-image ba-after" id="baAfter" style="background: linear-gradient(135deg, #f5f5f5, #ffffff, #e8e8e8);"></div>
-      <div class="ba-slider" id="baSlider">
-        <div class="ba-handle"><i class="fas fa-arrows-alt-h"></i></div>
-      </div>
+    <div class="before-after" id="beforeAfter">
+      <div class="ba-img ba-before" id="baBefore" style="background:linear-gradient(135deg,#8b7355,#a0826d,#6b5344);"></div>
+      <div class="ba-img" style="background:linear-gradient(135deg,#f5f5f5,#ffffff,#e8e8e8);"></div>
+      <div class="ba-slider" id="baSlider"><div class="ba-handle"><i class="fas fa-arrows-alt-h"></i></div></div>
       <div class="ba-label before">Before</div>
       <div class="ba-label after">After</div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section services" id="services">
-    <div class="section-header reveal">
+<!-- SERVICES -->
+<section class="section" id="services" style="background:var(--bg-alt);">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">What We Offer</span>
+      <h2 class="section-title">Our <span class="highlight">Services</span></h2>
       <div class="section-divider"></div>
-      <span class="section-label">What We Offer</span>
-      <h2 class="section-title">Comprehensive Stone Services</h2>
       <p class="section-desc">From quarry to installation, we handle every aspect of your stone journey.</p>
     </div>
     <div class="services-grid" id="servicesGrid"></div>
-    
-    <div class="trust-badges reveal">
-      <div class="trust-badge"><i class="fas fa-certificate"></i><span>ISO 9001 Certified</span></div>
-      <div class="trust-badge"><i class="fas fa-award"></i><span>Premium Quality</span></div>
-      <div class="trust-badge"><i class="fas fa-shield-alt"></i><span>15 Years Trust</span></div>
-      <div class="trust-badge"><i class="fas fa-truck"></i><span>Fast Delivery</span></div>
-      <div class="trust-badge"><i class="fas fa-handshake"></i><span>Factory Direct</span></div>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section testimonials">
-    <div class="section-header reveal">
-      <div class="section-divider"></div>
-      <span class="section-label">Client Stories</span>
-      <h2 class="section-title">Words From Our Clients</h2>
+<!-- TRUST -->
+<section class="trust-section">
+  <div class="container">
+    <div class="trust-grid">
+      <div class="trust-item"><i class="fas fa-certificate"></i><h4>ISO 9001 Certified</h4><p>Quality assured processes</p></div>
+      <div class="trust-item"><i class="fas fa-award"></i><h4>Premium Quality</h4><p>Only the finest materials</p></div>
+      <div class="trust-item"><i class="fas fa-shield-alt"></i><h4>15 Years Trust</h4><p>Serving since 2010</p></div>
+      <div class="trust-item"><i class="fas fa-truck"></i><h4>Fast Delivery</h4><p>Reliable local logistics</p></div>
+      <div class="trust-item"><i class="fas fa-handshake"></i><h4>Factory Direct</h4><p>No middlemen markup</p></div>
     </div>
-    <div class="testimonial-slider reveal">
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section testimonials">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Client Stories</span>
+      <h2 class="section-title">What Our <span class="highlight">Clients Say</span></h2>
+      <div class="section-divider"></div>
+    </div>
+    <div class="testimonial-slider">
       <div class="testimonial-track" id="testimonialTrack"></div>
-      <div class="testimonial-nav" id="testimonialNav"></div>
-      <div class="testimonial-progress"><div class="testimonial-progress-bar" id="testimonialProgress"></div></div>
+      <div class="testimonial-dots" id="testimonialDots"></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section" id="contact">
-    <div class="section-header reveal">
+<!-- CONTACT -->
+<section class="section contact" id="contact">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-tag">Get In Touch</span>
+      <h2 class="section-title">Start Your <span class="highlight">Project</span></h2>
       <div class="section-divider"></div>
-      <span class="section-label">Get In Touch</span>
-      <h2 class="section-title">Start Your Project</h2>
       <p class="section-desc">Let's discuss how we can bring your vision to life with the perfect stone.</p>
     </div>
     <div class="contact-grid">
-      <div class="contact-info reveal">
+      <div class="contact-info">
         <h3>Visit Our Factory</h3>
         <p>Experience our collection in person. Our design consultants are ready to help you find the perfect stone for your project.</p>
-        <ul class="contact-details">
+        <ul class="contact-list">
           <li><i class="fas fa-map-marker-alt"></i><span id="contactAddress">7RX3+PX6, Mor Khunda, District Nankana Sahib, Punjab, Pakistan</span></li>
-          <li><i class="fas fa-phone"></i><span><a href="tel:+923044847750" style="color: var(--gold); text-decoration: none;">0304 4847750</a> (Proprietor Ali Raza Chaddar: <a href="tel:+923084472182" style="color: var(--gold); text-decoration: none;">0308 4472182</a>)</span></li>
+          <li><i class="fas fa-phone"></i><span><a href="tel:+923044847750">0304 4847750</a> (Ali Raza: <a href="tel:+923084472182">0308 4472182</a>)</span></li>
           <li><i class="fas fa-envelope"></i><span id="contactEmail">info@hussainmarble.store</span></li>
-          <li><i class="fas fa-clock"></i><span id="workingHours">Mon - Sat: 9:00 AM - 8:00 PM <span id="openBadge"></span></span></li>
+          <li><i class="fas fa-clock"></i><span>Mon - Sat: 9:00 AM - 8:00 PM <span id="openBadge"></span></span></li>
         </ul>
         <div class="map-container">
-          <iframe src="https://www.google.com/maps?q=Mor+Khunda,Nankana+Sahib,Punjab,Pakistan&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+          <iframe src="https://www.google.com/maps?q=Mor+Khunda,Nankana+Sahib,Punjab,Pakistan&output=embed" loading="lazy" allowfullscreen></iframe>
         </div>
       </div>
-      <form class="contact-form reveal" name="contact" method="POST" data-netlify="true" id="contactForm">
-        <div class="form-group"><input type="text" name="name" id="fname" placeholder=" " required /><label>Your Name</label><div class="form-error" id="nameError">Please enter your name</div></div>
-        <div class="form-group"><input type="email" name="email" id="femail" placeholder=" " required /><label>Email Address</label><div class="form-error" id="emailError">Please enter a valid email</div></div>
-        <div class="form-group"><input type="tel" name="phone" id="fphone" placeholder=" " /><label>Phone Number</label></div>
-        <div class="form-group"><textarea name="message" id="fmessage" placeholder=" " required></textarea><label>Tell us about your project</label><div class="form-error" id="messageError">Please enter your message</div></div>
-        <button type="submit" class="btn-primary">Send Message</button>
+      <form class="contact-form" name="contact" method="POST" data-netlify="true" id="contactForm">
+        <h3>Request a Quote</h3>
+        <div class="form-group"><label>Your Name</label><input type="text" name="name" required></div>
+        <div class="form-group"><label>Email Address</label><input type="email" name="email" required></div>
+        <div class="form-group"><label>Phone Number</label><input type="tel" name="phone"></div>
+        <div class="form-group"><label>Tell us about your project</label><textarea name="message" required></textarea></div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send Message <i class="fas fa-paper-plane"></i></button>
       </form>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer class="footer">
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <h3>HUSSAIN MARBLE</h3>
+        <div class="logo">HUSSAIN <span class="gold">MARBLE</span></div>
         <p>Premium natural stone, crafted with passion. Transforming spaces into timeless masterpieces since 2010.</p>
         <div class="footer-social">
-          <a href="#" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="https://wa.me/923044847750" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-          <a href="#" target="_blank" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
+          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/923044847750" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest"></i></a>
         </div>
       </div>
       <div class="footer-col">
@@ -534,458 +566,237 @@
       <span>© 2026 Hussain Marble Factory. All rights reserved.</span>
       <span>Crafted with passion in Nankana Sahib, Pakistan</span>
     </div>
-  </footer>
+  </div>
+</footer>
 
-  <div id="custom-body"></div>
+<!-- FLOATING BUTTONS -->
+<a href="/admin/" class="fab fab-admin" title="Admin"><i class="fas fa-cog"></i></a>
+<a href="https://wa.me/923044847750?text=Hello%20Hussain%20Marble%20Factory!" target="_blank" class="fab fab-whatsapp"><i class="fab fa-whatsapp"></i></a>
+<a href="tel:+923044847750" class="fab fab-call"><i class="fas fa-phone"></i></a>
+<button class="fab fab-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></button>
 
-  <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
-  <a href="/admin/" class="admin-fab" title="Admin Panel"><i class="fas fa-cog"></i></a>
-  <a href="https://wa.me/923044847750?text=Hello%20Hussain%20Marble%20Factory!%20I%20want%20to%20know%20about%20your%20products." target="_blank" class="whatsapp-fab" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-  <a href="tel:+923044847750" class="call-fab" aria-label="Call Now"><i class="fas fa-phone"></i></a>
+<script>
+// DEFAULT DATA
+const DEFAULT={
+  hero:{subtitle:"Premium Marble, Granite & Gypsum Supplier",title:"Floor-to-Ceiling Perfection with Hussain Marble Factory",desc:"Established in 2010, your trusted source for premium marble, granite, ceramic tiles, and A-grade gypsum powder with factory-direct pricing.",image:""},
+  about:{title:"About Hussain Marble Factory",text1:"Founded in 2010 in the heart of Mor Khunda, Hussain Marble Factory has grown into the leading natural stone and construction material supplier in the Nankana Sahib District.",text2:"From precision marble cutting and crafting our signature 4x4 stone pools to producing fresh A-grade gypsum ceiling tiles onsite, our dedicated team handles every project with expertise.",image:""},
+  collections:[
+    {name:"Premium Natural Marble",type:"Flooring & Decor",price:"Rs. 180/sqft",image:"",color:"linear-gradient(135deg,#e8e8e8,#f5f5f5,#fff,#d4d4d4)"},
+    {name:"High-Grade Granite",type:"Countertops",price:"Rs. 250/sqft",image:"",color:"linear-gradient(135deg,#2a2a2a,#1a1a1a,#0f0f0f)"},
+    {name:"Ceramic Tiles",type:"Versatile Flooring",price:"Rs. 85/sqft",image:"",color:"linear-gradient(135deg,#d4c4a8,#f5f0e8,#fff)"},
+    {name:"A-Grade Gypsum Powder",type:"Ceiling Material",price:"Rs. 1,200/bag",image:"",color:"linear-gradient(135deg,#fff,#f0f0f0,#e8e8e8)"},
+    {name:"Gypsum Ceiling Tiles",type:"False Ceiling",price:"Rs. 95/sqft",image:"",color:"linear-gradient(135deg,#fff,#e8f4f8,#d4e8f0)"},
+    {name:"Custom 4x4 Marble Medallions",type:"Signature Crafting",price:"Rs. 9,000/piece",image:"",color:"linear-gradient(135deg,#c9a961,#e4c97e,#fff)"}
+  ],
+  services:[
+    {icon:"fas fa-cut",title:"Precision Cutting & Polishing",desc:"Expert onsite marble and granite cutting, custom stone pool fabrication, and professional polishing for flawless finishes."},
+    {icon:"fas fa-truck",title:"Local Delivery & Installation",desc:"Reliable delivery across Mor Khunda, Bucheki, Manawala, and Mandi Faizabad with expert installation by our experienced team."},
+    {icon:"fas fa-drafting-compass",title:"Design Consultation",desc:"Personalized guidance from our design experts to help you choose the perfect stone for your vision and budget."},
+    {icon:"fas fa-spray-can",title:"Restoration & Maintenance",desc:"Revitalize existing stone surfaces with our professional cleaning, polishing, and restoration services."}
+  ],
+  gallery:[
+    {title:"Premium White Marble Slabs",category:"Natural Stone",image:"",color:"linear-gradient(135deg,#e8e8e8,#f5f5f5)"},
+    {title:"Sunset View of Factory Stock",category:"Factory Operations",image:"",color:"linear-gradient(135deg,#c9a961,#8b7535,#4a4a4a)"},
+    {title:"Gypsum Ceiling Tiles in Drying Racks",category:"Gypsum Production",image:"",color:"linear-gradient(135deg,#fff,#f0f0f0)"},
+    {title:"4x4 Custom Marble Flower Medallion",category:"Signature Craftsmanship",image:"",color:"linear-gradient(135deg,#c9a961,#e4c97e,#f5f0e8)"},
+    {title:"Polished Granite Selection",category:"Natural Stone",image:"",color:"linear-gradient(135deg,#2a2a2a,#4a4a4a)"},
+    {title:"Heavy-Duty Metal Storage Racks",category:"Factory Operations",image:"",color:"linear-gradient(135deg,#8a8a8a,#c0c0c0,#e8e8e8)"},
+    {title:"Ceramic Flooring Tiles",category:"Tiles",image:"",color:"linear-gradient(135deg,#d4c4a8,#f5f0e8)"},
+    {title:"4x4 Custom Stone Pool",category:"Signature Craftsmanship",image:"",color:"linear-gradient(135deg,#1e3a5f,#4a4a4a)"}
+  ],
+  testimonials:[
+    {quote:"Hussain Marble Factory provided everything we needed for our new house. Their direct delivery to Bucheki saved us time and freight costs!",author:"Muhammad Aslam",role:"Homeowner, Bucheki"},
+    {quote:"Their digitized billing and instant WhatsApp PDF invoices make managing projects so much easier. The 4x4 marble medallion is a masterpiece.",author:"Tariq Builders",role:"Project Contractor"},
+    {quote:"Top-quality granite, A-grade gypsum powder, and excellent onsite cutting services. Highly recommend Ali Raza and his team.",author:"Waqas Ahmed",role:"Commercial Architect"}
+  ],
+  contact:{address:"7RX3+PX6, Mor Khunda, District Nankana Sahib, Punjab, Pakistan",phone:"0304 4847750",email:"info@hussainmarble.store"}
+};
 
-  <div class="toast" id="toast"></div>
+let DATA=DEFAULT;
 
-  <script>
-    const translations = {
-      en: {
-        heroSubtitle: "Premium Marble, Granite & Gypsum Supplier in Nankana Sahib District",
-        heroTitle: "Floor-to-Ceiling Perfection with Hussain Marble Factory",
-        heroDesc: "Established in 2010, Hussain Marble Factory is your trusted source for premium marble, granite, ceramic tiles, and A-grade gypsum powder.",
-        aboutTitle: "About Hussain Marble Factory",
-        aboutText1: "Founded in 2010 in the heart of Mor Khunda, Hussain Marble Factory has grown into the leading natural stone and construction material supplier in the Nankana Sahib District.",
-        aboutText2: "From precision marble cutting and crafting our signature 4x4 stone pools to producing fresh A-grade gypsum ceiling tiles onsite, our dedicated team handles every project with expertise.",
-        contactAddress: "7RX3+PX6, Mor Khunda, District Nankana Sahib, Punjab, Pakistan"
-      },
-      ur: {
-        heroSubtitle: "نانکانہ صاحب ضلع میں پریمیم ماربل، گرینائٹ اور جپسم سپلائر",
-        heroTitle: "حسین ماربل فیکٹری کے ساتھ فلور ٹو سیلنگ کمال",
-        heroDesc: "2010 میں قائم، حسین ماربل فیکٹری آپ کا قابل اعتماد ذریعہ ہے پریمیم ماربل، گرینائٹ، سیرامک ٹائلز، اور اے گریڈ جپسم پاؤڈر کے لیے۔",
-        aboutTitle: "حسین ماربل فیکٹری کے بارے میں",
-        aboutText1: "2010 میں مور کندہ کے دل میں قائم، حسین ماربل فیکٹری نانکانہ صاحب ضلع میں قدرتی پتھر اور تعمیراتی مواد کے سپلائر کے طور پر ترقی پائی ہے۔",
-        aboutText2: "پریسژن ماربل کٹنگ سے لے کر ہمارے سگنیچر 4x4 اسٹون پولز بنانے تک، ہماری ٹیم ہر پروجیکٹ مہارت سے سنبھالتی ہے۔",
-        contactAddress: "7RX3+PX6، مور کندہ، ضلع نانکانہ صاحب، پنجاب، پاکستان"
-      }
-    };
+function mergeData(cms){
+  if(!cms)return DEFAULT;
+  return{
+    hero:{...DEFAULT.hero,...(cms.hero||{})},
+    about:{...DEFAULT.about,...(cms.about||{})},
+    contact:{...DEFAULT.contact,...(cms.contact||{})},
+    collections:(cms.collections&&cms.collections.length>0)?cms.collections.map(c=>({...DEFAULT.collections[0],...c})):DEFAULT.collections,
+    services:(cms.services&&cms.services.length>0)?cms.services.map(s=>({...DEFAULT.services[0],...s})):DEFAULT.services,
+    gallery:(cms.gallery&&cms.gallery.length>0)?cms.gallery.map(g=>({...DEFAULT.gallery[0],...g})):DEFAULT.gallery,
+    testimonials:(cms.testimonials&&cms.testimonials.length>0)?cms.testimonials:DEFAULT.testimonials
+  };
+}
 
-    let currentLang = 'en';
-    let currentTheme = localStorage.getItem('theme') || 'dark';
+function bgFor(item){return item.image?'background-image:url('+item.image+')':'background:'+(item.color||'linear-gradient(135deg,#2a2a2a,#3a3a3a)');}
 
-    const defaultData = {
-      hero: { subtitle: "Premium Marble, Granite & Gypsum Supplier in Nankana Sahib District", title: "Floor-to-Ceiling Perfection with Hussain Marble Factory", desc: "Established in 2010, Hussain Marble Factory is your trusted source for premium marble, granite, ceramic tiles, and A-grade gypsum powder.", image: "" },
-      about: { title: "About Hussain Marble Factory", text1: "Founded in 2010 in the heart of Mor Khunda.", text2: "From precision marble cutting to gypsum ceiling tiles.", image: "" },
-      collections: [
-        { name: "Premium Natural Marble", type: "Flooring & Decor", price: "Starting Rs. 180/sqft", image: "", color: "linear-gradient(135deg,#e8e8e8,#f5f5f5,#fff,#d4d4d4)" },
-        { name: "High-Grade Granite", type: "Countertops", price: "Starting Rs. 250/sqft", image: "", color: "linear-gradient(135deg,#2a2a2a,#1a1a1a,#0f0f0f)" },
-        { name: "Ceramic Tiles", type: "Versatile Flooring", price: "Starting Rs. 85/sqft", image: "", color: "linear-gradient(135deg,#d4c4a8,#f5f0e8,#fff)" },
-        { name: "A-Grade Gypsum Powder", type: "Ceiling Material", price: "Starting Rs. 1,200/bag", image: "", color: "linear-gradient(135deg,#fff,#f0f0f0,#e8e8e8)" },
-        { name: "Gypsum Ceiling Tiles", type: "False Ceiling", price: "Starting Rs. 95/sqft", image: "", color: "linear-gradient(135deg,#fff,#e8f4f8,#d4e8f0)" },
-        { name: "Custom 4x4 Marble Medallions", type: "Signature Crafting", price: "Starting Rs. 9,000/piece", image: "", color: "linear-gradient(135deg,#c9a961,#e4c97e,#fff)" }
-      ],
-      services: [
-        { icon: "fas fa-cut", title: "Precision Cutting & Polishing", desc: "Expert onsite marble and granite cutting, custom stone pool fabrication, and professional polishing." },
-        { icon: "fas fa-truck", title: "Local Delivery & Installation", desc: "Reliable delivery across Mor Khunda, Bucheki, Manawala, and Mandi Faizabad with expert installation." }
-      ],
-      gallery: [
-        { title: "Premium White Marble Slabs", category: "Natural Stone", image: "", color: "linear-gradient(135deg,#e8e8e8,#f5f5f5)" },
-        { title: "Sunset View of Factory Stock", category: "Factory Operations", image: "", color: "linear-gradient(135deg,#c9a961,#8b7535,#4a4a4a)" },
-        { title: "Gypsum Ceiling Tiles in Drying Racks", category: "Gypsum Production", image: "", color: "linear-gradient(135deg,#fff,#f0f0f0)" },
-        { title: "4x4 Custom Marble Flower Medallion", category: "Signature Craftsmanship", image: "", color: "linear-gradient(135deg,#c9a961,#e4c97e,#f5f0e8)" },
-        { title: "Polished Granite Selection", category: "Natural Stone", image: "", color: "linear-gradient(135deg,#2a2a2a,#4a4a4a)" },
-        { title: "Heavy-Duty Metal Storage Racks", category: "Factory Operations", image: "", color: "linear-gradient(135deg,#8a8a8a,#c0c0c0,#e8e8e8)" },
-        { title: "Ceramic Flooring Tiles", category: "Tiles", image: "", color: "linear-gradient(135deg,#d4c4a8,#f5f0e8)" },
-        { title: "4x4 Custom Stone Pool", category: "Signature Craftsmanship", image: "", color: "linear-gradient(135deg,#1e3a5f,#4a4a4a)" }
-      ],
-      testimonials: [
-        { quote: "Hussain Marble Factory provided everything we needed for our new house. Their direct delivery to Bucheki saved us time and freight costs!", author: "Muhammad Aslam", role: "Homeowner, Bucheki" },
-        { quote: "Their digitized billing and instant WhatsApp PDF invoices make managing projects so much easier. The 4x4 marble medallion is a masterpiece.", author: "Tariq Builders", role: "Project Contractor" },
-        { quote: "Top-quality granite, A-grade gypsum powder, and excellent onsite cutting services. Highly recommend Ali Raza and his team.", author: "Waqas Ahmed", role: "Commercial Architect" }
-      ],
-      contact: { address: "7RX3+PX6, Mor Khunda, District Nankana Sahib, Punjab, Pakistan", phone: "0304 4847750", email: "info@hussainmarble.store" }
-    };
+function render(){
+  const d=DATA;
+  const set=(id,val)=>{const el=document.getElementById(id);if(el)el.textContent=val||'';};
+  const setHTML=(id,val)=>{const el=document.getElementById(id);if(el)el.innerHTML=val||'';};
+  
+  set('heroTag',d.hero.subtitle);
+  setHTML('heroTitle',(d.hero.title||'').replace(/Hussain Marble Factory/g,'<span class="highlight">Hussain Marble Factory</span>'));
+  set('heroDesc',d.hero.desc);
+  const hb=document.getElementById('heroBg');
+  if(hb&&d.hero.image)hb.style.backgroundImage='url('+d.hero.image+')';
+  
+  set('aboutTitle',d.about.title);
+  set('aboutText1',d.about.text1);
+  set('aboutText2',d.about.text2);
+  const ai=document.getElementById('aboutImage');
+  if(ai&&d.about.image)ai.style.backgroundImage='url('+d.about.image+')';
+  
+  set('contactAddress',d.contact.address);
+  set('contactEmail',d.contact.email);
+  
+  // Categories
+  const cg=document.getElementById('categoriesGrid');
+  if(cg){
+    cg.innerHTML=d.collections.map(c=>'<div class="category-card"><div class="category-bg" style="'+bgFor(c)+'"></div><div class="category-overlay"><div class="category-type">'+(c.type||'')+'</div><h3 class="category-name">'+(c.name||'')+'</h3><div class="category-price">'+(c.price||'')+'</div><a href="https://wa.me/923044847750?text='+encodeURIComponent('I\'m interested in '+(c.name||''))+'" target="_blank" class="category-link">Get Quote <i class="fas fa-arrow-right"></i></a></div></div>').join('');
+  }
+  
+  // Products (first 4 collections as featured)
+  const pg=document.getElementById('productsGrid');
+  if(pg){
+    const featured=d.collections.slice(0,4);
+    pg.innerHTML=featured.map((c,i)=>'<div class="product-card"><div class="product-img" style="'+bgFor(c)+'"><span class="product-badge">Featured</span></div><div class="product-info"><div class="product-category">'+(c.type||'')+'</div><h3 class="product-name">'+(c.name||'')+'</h3><p class="product-desc">Premium quality '+(c.name||'stone')+' with factory-direct pricing and expert installation services.</p><div class="product-footer"><span class="product-price">'+(c.price||'')+'</span><a href="https://wa.me/923044847750?text='+encodeURIComponent('Quote for '+(c.name||''))+'" target="_blank" class="product-btn">Get Quote</a></div></div></div>').join('');
+  }
+  
+  // Services
+  const sg=document.getElementById('servicesGrid');
+  if(sg){
+    sg.innerHTML=d.services.map(s=>'<div class="service-card"><div class="service-icon"><i class="'+(s.icon||'fas fa-star')+'"></i></div><h3 class="service-title">'+(s.title||'')+'</h3><p class="service-desc">'+(s.desc||'')+'</p></div>').join('');
+  }
+  
+  // Gallery
+  const gg=document.getElementById('galleryScroll');
+  if(gg){
+    gg.innerHTML='<div class="gallery-track">'+d.gallery.map(g=>'<div class="gallery-item"><div class="gallery-bg" style="'+bgFor(g)+'"></div><div class="gallery-overlay"><h4>'+(g.title||'')+'</h4><p>'+(g.category||'')+'</p></div></div>').join('')+'</div>';
+  }
+  
+  // Testimonials
+  const tt=document.getElementById('testimonialTrack');
+  const td=document.getElementById('testimonialDots');
+  if(tt&&td){
+    tt.innerHTML=d.testimonials.map(t=>'<div class="testimonial"><div class="testimonial-quote">'+(t.quote||'')+'</div><div class="testimonial-author">'+(t.author||'')+'</div><div class="testimonial-role">'+(t.role||'')+'</div></div>').join('');
+    td.innerHTML=d.testimonials.map((_,i)=>'<button class="testimonial-dot'+(i===0?' active':'')+'" onclick="goTest('+i+')"></button>').join('');
+  }
+  
+  // Counter animation
+  document.querySelectorAll('.hero-stat-num').forEach(el=>{
+    const target=parseInt(el.getAttribute('data-target'));
+    if(!target)return;
+    let current=0;const step=target/50;
+    const timer=setInterval(()=>{current+=step;if(current>=target){current=target;clearInterval(timer);}el.textContent=Math.floor(current)+'+';},30);
+  });
+}
 
-    let siteData = defaultData;
+// TESTIMONIAL SLIDER
+var curTest=0;
+function goTest(i){
+  curTest=i;
+  const track=document.getElementById('testimonialTrack');
+  if(track)track.style.transform='translateX(-'+(i*100)+'%)';
+  document.querySelectorAll('.testimonial-dot').forEach((d,idx)=>d.classList.toggle('active',idx===i));
+}
+setInterval(()=>{const dots=document.querySelectorAll('.testimonial-dot');if(dots.length>1)goTest((curTest+1)%dots.length);},6000);
 
-    function toggleTheme() {
-      currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', currentTheme);
-      localStorage.setItem('theme', currentTheme);
-      const icon = document.getElementById('themeIcon');
-      const iconMobile = document.getElementById('themeIconMobile');
-      if (icon) icon.className = currentTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
-      if (iconMobile) iconMobile.className = currentTheme === 'dark' ? 'fas fa-moon' : 'fas fa-sun';
-    }
+// BEFORE/AFTER
+var ba=document.getElementById('beforeAfter'),baSlider=document.getElementById('baSlider'),baBefore=document.getElementById('baBefore'),dragging=false;
+if(ba&&baSlider&&baBefore){
+  function updateBA(x){const rect=ba.getBoundingClientRect();let pos=((x-rect.left)/rect.width)*100;pos=Math.max(0,Math.min(100,pos));baSlider.style.left=pos+'%';baBefore.style.clipPath='inset(0 '+(100-pos)+'% 0 0)';}
+  ba.addEventListener('mousedown',e=>{dragging=true;updateBA(e.clientX);});
+  ba.addEventListener('touchstart',e=>{dragging=true;updateBA(e.touches[0].clientX);});
+  document.addEventListener('mousemove',e=>{if(dragging)updateBA(e.clientX);});
+  document.addEventListener('touchmove',e=>{if(dragging)updateBA(e.touches[0].clientX);});
+  document.addEventListener('mouseup',()=>dragging=false);
+  document.addEventListener('touchend',()=>dragging=false);
+}
 
-    function toggleLang() {
-      currentLang = currentLang === 'en' ? 'ur' : 'en';
-      document.body.classList.toggle('urdu', currentLang === 'ur');
-      document.documentElement.lang = currentLang;
-      const btn = document.getElementById('langBtn');
-      const btnMobile = document.getElementById('langBtnMobile');
-      if (btn) btn.textContent = currentLang === 'en' ? 'UR' : 'EN';
-      if (btnMobile) btnMobile.textContent = currentLang === 'en' ? 'اردو' : 'English';
-      
-      const t = translations[currentLang];
-      const set = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
-      set('heroSubtitle', t.heroSubtitle);
-      const ht = document.getElementById('heroTitle');
-      if (ht) ht.textContent = t.heroTitle;
-      set('heroDesc', t.heroDesc);
-      set('aboutTitle', t.aboutTitle);
-      set('aboutText1', t.aboutText1);
-      set('aboutText2', t.aboutText2);
-      set('contactAddress', t.contactAddress);
-    }
+// OPEN/CLOSED
+function updateBadge(){
+  const now=new Date(),day=now.getDay(),hour=now.getHours();
+  const badge=document.getElementById('openBadge');
+  if(!badge)return;
+  const open=day>=1&&day<=6&&hour>=9&&hour<20;
+  badge.className=open?'open-badge':'closed-badge';
+  badge.textContent=open?'OPEN NOW':'CLOSED';
+}
 
-    function updateOpenBadge() {
-      const now = new Date();
-      const day = now.getDay();
-      const hour = now.getHours();
-      const badge = document.getElementById('openBadge');
-      if (!badge) return;
-      const isOpen = day >= 1 && day <= 6 && hour >= 9 && hour < 20;
-      if (isOpen) {
-        badge.className = 'open-badge';
-        badge.textContent = 'OPEN NOW';
-      } else {
-        badge.className = 'closed-badge';
-        badge.textContent = 'CLOSED';
-      }
-    }
+// THEME
+function toggleTheme(){
+  const current=document.documentElement.getAttribute('data-theme')||'light';
+  const next=current==='light'?'dark':'light';
+  document.documentElement.setAttribute('data-theme',next);
+  localStorage.setItem('theme',next);
+  const icon=document.querySelector('#themeBtn i');
+  if(icon)icon.className=next==='light'?'fas fa-moon':'fas fa-sun';
+}
 
-    function showToast(msg, type = '') {
-      const t = document.getElementById('toast');
-      t.textContent = msg;
-      t.className = 'toast show ' + type;
-      setTimeout(() => t.classList.remove('show'), 3000);
-    }
+// LANG
+const translations={
+  en:{tag:"Premium Marble, Granite & Gypsum Supplier",title:"Floor-to-Ceiling Perfection with Hussain Marble Factory",desc:"Established in 2010, your trusted source for premium marble, granite, ceramic tiles, and A-grade gypsum powder with factory-direct pricing.",aboutTitle:"About Hussain Marble Factory",about1:"Founded in 2010 in the heart of Mor Khunda, Hussain Marble Factory has grown into the leading natural stone and construction material supplier in the Nankana Sahib District.",about2:"From precision marble cutting and crafting our signature 4x4 stone pools to producing fresh A-grade gypsum ceiling tiles onsite, our dedicated team handles every project with expertise.",address:"7RX3+PX6, Mor Khunda, District Nankana Sahib, Punjab, Pakistan"},
+  ur:{tag:"نانکانہ صاحب ضلع میں پریمیم ماربل، گرینائٹ اور جپسم سپلائر",title:"حسین ماربل فیکٹری کے ساتھ فلور ٹو سیلنگ کمال",desc:"2010 میں قائم، آپ کا قابل اعتماد ذریعہ پریمیم ماربل، گرینائٹ، سیرامک ٹائلز، اور اے گریڈ جپسم پاؤڈر کے لیے۔",aboutTitle:"حسین ماربل فیکٹری کے بارے میں",about1:"2010 میں مور کندہ کے دل میں قائم، حسین ماربل فیکٹری نانکانہ صاحب ضلع میں قدرتی پتھر اور تعمیراتی مواد کے سپلائر کے طور پر ترقی پائی ہے۔",about2:"پریسژن ماربل کٹنگ سے لے کر ہمارے سگنیچر 4x4 اسٹون پولز بنانے تک، ہماری ٹیم ہر پروجیکٹ مہارت سے سنبھالتی ہے۔",address:"7RX3+PX6، مور کندہ، ضلع نانکانہ صاحب، پنجاب، پاکستان"}
+};
+var curLang='en';
+function toggleLang(){
+  curLang=curLang==='en'?'ur':'en';
+  document.body.classList.toggle('urdu',curLang==='ur');
+  document.documentElement.lang=curLang;
+  const btn=document.getElementById('langBtn');
+  if(btn)btn.textContent=curLang==='en'?'UR':'EN';
+  const t=translations[curLang];
+  const set=(id,val)=>{const el=document.getElementById(id);if(el)el.textContent=val;};
+  const setHTML=(id,val)=>{const el=document.getElementById(id);if(el)el.innerHTML=val;};
+  set('heroTag',t.tag);
+  setHTML('heroTitle',t.title.replace(/Hussain Marble Factory/g,'<span class="highlight">Hussain Marble Factory</span>'));
+  set('heroDesc',t.desc);
+  set('aboutTitle',t.aboutTitle);
+  set('aboutText1',t.about1);
+  set('aboutText2',t.about2);
+  set('contactAddress',t.address);
+}
 
-    function renderSite() {
-      const d = siteData;
-      const hero = d.hero || defaultData.hero;
-      const about = d.about || defaultData.about;
-      const contact = d.contact || defaultData.contact;
-      const collections = (d.collections && d.collections.length) ? d.collections : defaultData.collections;
-      const services = (d.services && d.services.length) ? d.services : defaultData.services;
-      const gallery = (d.gallery && d.gallery.length) ? d.gallery : defaultData.gallery;
-      const testimonials = (d.testimonials && d.testimonials.length) ? d.testimonials : defaultData.testimonials;
+// SCROLL
+window.addEventListener('scroll',()=>{
+  const scrollY=window.scrollY;
+  document.getElementById('header').classList.toggle('scrolled',scrollY>50);
+  const topBtn=document.getElementById('backToTop');
+  if(topBtn)topBtn.classList.toggle('visible',scrollY>500);
+  const sections=document.querySelectorAll('section[id]');
+  sections.forEach(sec=>{
+    const top=sec.offsetTop-100,bottom=top+sec.offsetHeight,id=sec.getAttribute('id');
+    const link=document.querySelector('.nav-link[href="#'+id+'"]');
+    if(link)link.classList.toggle('active',scrollY>=top&&scrollY<bottom);
+  });
+});
 
-      const set = (id, val) => { const el = document.getElementById(id); if (el && val != null) el.textContent = val; };
-      set('heroSubtitle', hero.subtitle);
-      const ht = document.getElementById('heroTitle'); if (ht) ht.textContent = hero.title;
-      set('heroDesc', hero.desc);
-      set('aboutTitle', about.title);
-      set('aboutText1', about.text1);
-      set('aboutText2', about.text2);
-      set('contactAddress', contact.address);
+// FORM
+const form=document.getElementById('contactForm');
+if(form){
+  form.addEventListener('submit',e=>{
+    e.preventDefault();
+    const fd=new FormData(form);
+    fetch('/',{method:'POST',headers:{"Content-Type":"application/x-www-form-urlencoded"},body:new URLSearchParams(fd).toString()})
+      .then(()=>{alert('Thank you! We will contact you soon.');form.reset();})
+      .catch(()=>alert('Something went wrong.'));
+  });
+}
 
-      const heroBg = document.getElementById('heroBg');
-      if (heroBg) {
-        if (hero.image) heroBg.style.backgroundImage = `url('${hero.image}')`;
-        else heroBg.style.background = 'linear-gradient(135deg,#0a0a0a,#1a1a1a,#0a0a0a)';
-      }
-      const aboutImg = document.getElementById('aboutImage');
-      if (aboutImg) {
-        if (about.image) aboutImg.style.backgroundImage = `url('${about.image}')`;
-        else aboutImg.style.background = 'linear-gradient(135deg,#1a1a1a,#2a2a2a,#1a1a1a)';
-      }
+// INIT
+window.addEventListener('load',()=>{
+  updateBadge();
+  setInterval(updateBadge,60000);
+  fetch('data.json').then(r=>r.json()).then(cms=>{DATA=mergeData(cms);render();}).catch(()=>render());
+});
 
-      const bgFor = (item) => item.image ? `background-image:url('${item.image}')` : (item.color ? `background:${item.color}` : `background:linear-gradient(135deg,#2a2a2a,#3a3a3a)`);
-
-      const cg = document.getElementById('collectionsGrid');
-      if (cg) cg.innerHTML = collections.map(c => `
-        <div class="collection-card reveal" data-tilt>
-          <div class="collection-bg" style="${bgFor(c)}"></div>
-          <div class="collection-overlay">
-            <div class="collection-type">${c.type || ''}</div>
-            <h3 class="collection-name">${c.name || ''}</h3>
-            <div class="collection-price">${c.price || ''}</div>
-            <a href="https://wa.me/923044847750?text=I'm%20interested%20in%20${encodeURIComponent(c.name || '')}" target="_blank" class="collection-link">Get Quote <i class="fab fa-whatsapp"></i></a>
-          </div>
-        </div>`).join('');
-
-      const sg = document.getElementById('servicesGrid');
-      if (sg) sg.innerHTML = services.map(s => `
-        <div class="service-card reveal">
-          <div class="service-icon"><i class="${s.icon}"></i></div>
-          <h3 class="service-title">${s.title}</h3>
-          <p class="service-desc">${s.desc}</p>
-        </div>`).join('');
-
-      const hg = document.getElementById('horizontalGallery');
-      if (hg) hg.innerHTML = `<div class="horizontal-track">` + gallery.map(g => `
-        <div class="horizontal-item">
-          <div class="horizontal-bg" style="${bgFor(g)}"></div>
-          <div class="horizontal-overlay">
-            <h4>${g.title}</h4>
-            <p>${g.category}</p>
-          </div>
-        </div>`).join('') + `</div>`;
-
-      const tt = document.getElementById('testimonialTrack');
-      const tn = document.getElementById('testimonialNav');
-      if (tt && tn) {
-        tt.innerHTML = testimonials.map(t => `
-          <div class="testimonial">
-            <div class="testimonial-quote">${t.quote}</div>
-            <div class="testimonial-author">${t.author}</div>
-            <div class="testimonial-role">${t.role || ''}</div>
-          </div>`).join('');
-        tn.innerHTML = testimonials.map((_, i) => `<button class="testimonial-dot ${i === 0 ? 'active' : ''}" onclick="goToTestimonial(${i})" aria-label="Testimonial ${i + 1}"></button>`).join('');
-      }
-
-      setTimeout(initAnimations, 100);
-    }
-
-    function applyCustomCode(cc) {
-      if (!cc) return;
-      if (cc.customCss) { let s = document.getElementById('custom-css'); if (!s) { s = document.createElement('style'); s.id = 'custom-css'; document.head.appendChild(s); } s.textContent = cc.customCss; }
-      if (cc.customBodyHtml) { const b = document.getElementById('custom-body'); if (b) b.innerHTML = cc.customBodyHtml; }
-      if (cc.customJs) { try { const sc = document.createElement('script'); sc.textContent = cc.customJs; document.body.appendChild(sc); } catch (e) { console.log('Custom JS error'); } }
-    }
-
-    function initAnimations() {
-      if (typeof gsap === 'undefined') return;
-      gsap.registerPlugin(ScrollTrigger);
-
-      gsap.from(".hero-subtitle", { y: 30, opacity: 0, duration: 1, delay: 0.2, ease: "power3.out" });
-      gsap.from(".hero-title", { y: 50, opacity: 0, duration: 1.2, delay: 0.4, ease: "power3.out" });
-      gsap.from(".hero-desc", { y: 30, opacity: 0, duration: 1, delay: 0.6, ease: "power3.out" });
-      gsap.from(".hero-btns", { y: 30, opacity: 0, duration: 1, delay: 0.8, ease: "power3.out" });
-
-      gsap.to(".hero-bg", { yPercent: 25, ease: "none", scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } });
-
-      gsap.utils.toArray(".section-header").forEach(header => {
-        gsap.from(header.children, { y: 40, opacity: 0, duration: 1, stagger: 0.2, ease: "power3.out", scrollTrigger: { trigger: header, start: "top 85%" } });
-      });
-
-      const grids = document.querySelectorAll(".collections-grid, .services-grid");
-      grids.forEach(grid => {
-        gsap.from(grid.children, { y: 60, opacity: 0, duration: 0.8, stagger: 0.15, ease: "power3.out", scrollTrigger: { trigger: grid, start: "top 85%" } });
-      });
-
-      gsap.to(".about-image", { yPercent: -15, ease: "none", scrollTrigger: { trigger: ".about", start: "top bottom", end: "bottom top", scrub: true } });
-
-      gsap.from(".contact-info, .contact-form", { y: 50, opacity: 0, duration: 1, stagger: 0.3, ease: "power3.out", scrollTrigger: { trigger: "#contact", start: "top 80%" } });
-
-      document.querySelectorAll('.stat-num').forEach(el => {
-        const target = parseInt(el.dataset.target);
-        if (!target) return;
-        gsap.to(el, {
-          innerHTML: target,
-          duration: 2,
-          snap: { innerHTML: 1 },
-          ease: "power2.out",
-          scrollTrigger: { trigger: el, start: "top 85%" }
-        });
-      });
-
-      document.querySelectorAll('[data-tilt]').forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-          const rect = card.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          const centerX = rect.width / 2;
-          const centerY = rect.height / 2;
-          const rotateX = ((y - centerY) / centerY) * -8;
-          const rotateY = ((x - centerX) / centerX) * 8;
-          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
-        });
-        card.addEventListener('mouseleave', () => {
-          card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
-        });
-      });
-    }
-
-    function initParticles() {
-      const canvas = document.getElementById('particles-canvas');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      let particles = [];
-      const count = window.innerWidth < 768 ? 20 : 40;
-
-      function resize() {
-        canvas.width = canvas.offsetWidth;
-        canvas.height = canvas.offsetHeight;
-      }
-      resize();
-      window.addEventListener('resize', resize);
-
-      for (let i = 0; i < count; i++) {
-        particles.push({
-          x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          size: Math.random() * 2 + 0.5,
-          speedX: (Math.random() - 0.5) * 0.3,
-          speedY: (Math.random() - 0.5) * 0.3,
-          opacity: Math.random() * 0.5 + 0.1
-        });
-      }
-
-      function animate() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        particles.forEach(p => {
-          p.x += p.speedX;
-          p.y += p.speedY;
-          if (p.x < 0) p.x = canvas.width;
-          if (p.x > canvas.width) p.x = 0;
-          if (p.y < 0) p.y = canvas.height;
-          if (p.y > canvas.height) p.y = 0;
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-          ctx.fillStyle = `rgba(201, 169, 97, ${p.opacity})`;
-          ctx.fill();
-        });
-        requestAnimationFrame(animate);
-      }
-      animate();
-    }
-
-    let currentTestimonial = 0;
-    let testimonialInterval;
-    let progressInterval;
-    const SLIDE_DURATION = 6000;
-
-    function goToTestimonial(i) {
-      currentTestimonial = i;
-      const track = document.getElementById('testimonialTrack');
-      if (track) track.style.transform = `translateX(-${i * 100}%)`;
-      document.querySelectorAll('.testimonial-dot').forEach((d, idx) => d.classList.toggle('active', idx === i));
-      resetProgress();
-    }
-
-    function nextTestimonial() {
-      const dots = document.querySelectorAll('.testimonial-dot');
-      if (dots.length > 1) goToTestimonial((currentTestimonial + 1) % dots.length);
-    }
-
-    function resetProgress() {
-      clearInterval(testimonialInterval);
-      clearInterval(progressInterval);
-      const bar = document.getElementById('testimonialProgress');
-      if (!bar) return;
-      bar.style.width = '0%';
-      let progress = 0;
-      const step = 100 / (SLIDE_DURATION / 50);
-      progressInterval = setInterval(() => {
-        progress += step;
-        bar.style.width = Math.min(progress, 100) + '%';
-      }, 50);
-      testimonialInterval = setTimeout(nextTestimonial, SLIDE_DURATION);
-    }
-
-    const ba = document.getElementById('beforeAfter');
-    const baSlider = document.getElementById('baSlider');
-    const baBefore = document.getElementById('baBefore');
-    let isDragging = false;
-
-    if (ba && baSlider && baBefore) {
-      function updateBA(x) {
-        const rect = ba.getBoundingClientRect();
-        let pos = ((x - rect.left) / rect.width) * 100;
-        pos = Math.max(0, Math.min(100, pos));
-        baSlider.style.left = pos + '%';
-        baBefore.style.clipPath = `inset(0 ${100 - pos}% 0 0)`;
-      }
-
-      ba.addEventListener('mousedown', (e) => { isDragging = true; updateBA(e.clientX); });
-      ba.addEventListener('touchstart', (e) => { isDragging = true; updateBA(e.touches[0].clientX); });
-      document.addEventListener('mousemove', (e) => { if (isDragging) updateBA(e.clientX); });
-      document.addEventListener('touchmove', (e) => { if (isDragging) updateBA(e.touches[0].clientX); });
-      document.addEventListener('mouseup', () => { isDragging = false; });
-      document.addEventListener('touchend', () => { isDragging = false; });
-    }
-
-    const form = document.getElementById('contactForm');
-    if (form) {
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        let valid = true;
-        const name = document.getElementById('fname');
-        const email = document.getElementById('femail');
-        const message = document.getElementById('fmessage');
-
-        [name, email, message].forEach(el => { el.classList.remove('error', 'success'); });
-        document.querySelectorAll('.form-error').forEach(el => el.classList.remove('show'));
-
-        if (!name.value.trim()) { name.classList.add('error'); document.getElementById('nameError').classList.add('show'); valid = false; }
-        else name.classList.add('success');
-
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email.value)) { email.classList.add('error'); document.getElementById('emailError').classList.add('show'); valid = false; }
-        else email.classList.add('success');
-
-        if (!message.value.trim()) { message.classList.add('error'); document.getElementById('messageError').classList.add('show'); valid = false; }
-        else message.classList.add('success');
-
-        if (!valid) { showToast('Please fix the errors', 'error'); return; }
-
-        const fd = new FormData(form);
-        fetch('/', { method: 'POST', headers: { "Content-Type": "application/x-www-form-urlencoded" }, body: new URLSearchParams(fd).toString() })
-          .then(() => { showToast('Message sent successfully!', 'success'); form.reset(); [name, email, message].forEach(el => el.classList.remove('success')); })
-          .catch(() => showToast('Something went wrong', 'error'));
-      });
-    }
-
-    window.addEventListener('scroll', () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = (scrollTop / docHeight) * 100;
-      document.getElementById('progressBar').style.width = progress + '%';
-
-      const btn = document.getElementById('backToTop');
-      if (btn) btn.classList.toggle('visible', scrollTop > 500);
-
-      document.getElementById('nav').classList.toggle('scrolled', scrollTop > 50);
-
-      const sections = document.querySelectorAll('section[id]');
-      sections.forEach(sec => {
-        const top = sec.offsetTop - 100;
-        const bottom = top + sec.offsetHeight;
-        const id = sec.getAttribute('id');
-        const link = document.querySelector(`.nav-link[href="#${id}"]`);
-        if (link) link.classList.toggle('active', scrollTop >= top && scrollTop < bottom);
-      });
-    });
-
-    const cursor = document.getElementById('cursor');
-    if (cursor) {
-      document.addEventListener('mousemove', e => { cursor.style.left = e.clientX + 'px'; cursor.style.top = e.clientY + 'px'; });
-      document.querySelectorAll('a, button, .collection-card, .horizontal-item').forEach(el => {
-        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-      });
-    }
-
-    window.addEventListener('load', () => {
-      setTimeout(() => document.getElementById('loader').classList.add('hidden'), 1500);
-      initParticles();
-      updateOpenBadge();
-      setInterval(updateOpenBadge, 60000);
-    });
-
-    function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') { document.getElementById('mobileMenu').classList.remove('active'); }
-    });
-
-    document.documentElement.setAttribute('data-theme', currentTheme);
-    if (currentTheme === 'light') {
-      const icon = document.getElementById('themeIcon');
-      const iconMobile = document.getElementById('themeIconMobile');
-      if (icon) icon.className = 'fas fa-sun';
-      if (iconMobile) iconMobile.className = 'fas fa-sun';
-    }
-
-    Promise.all([
-      fetch('data.json').then(r => r.json()).catch(() => null),
-      fetch('custom-code.json').then(r => r.json()).catch(() => null)
-    ]).then(([data, cc]) => {
-      if (data) siteData = data;
-      renderSite();
-      applyCustomCode(cc);
-      setTimeout(resetProgress, 1000);
-    });
-  </script>
+// Apply saved theme
+const savedTheme=localStorage.getItem('theme');
+if(savedTheme){
+  document.documentElement.setAttribute('data-theme',savedTheme);
+  const icon=document.querySelector('#themeBtn i');
+  if(icon&&savedTheme==='dark')icon.className='fas fa-sun';
+}
+</script>
 </body>
 </html>
